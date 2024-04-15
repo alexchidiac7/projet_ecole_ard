@@ -1,0 +1,8 @@
+prefix=/opt/ros/melodic
+
+Name: roswtf
+Description: Description of roswtf
+Version: 1.14.13
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

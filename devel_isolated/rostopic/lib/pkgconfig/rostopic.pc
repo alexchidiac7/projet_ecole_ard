@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/devel_isolated/rostopic
+
+Name: rostopic
+Description: Description of rostopic
+Version: 1.14.13
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

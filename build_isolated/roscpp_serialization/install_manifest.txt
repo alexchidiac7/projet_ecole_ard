@@ -1,0 +1,17 @@
+/opt/ros/melodic/_setup_util.py
+/opt/ros/melodic/env.sh
+/opt/ros/melodic/setup.bash
+/opt/ros/melodic/local_setup.bash
+/opt/ros/melodic/setup.sh
+/opt/ros/melodic/local_setup.sh
+/opt/ros/melodic/setup.zsh
+/opt/ros/melodic/local_setup.zsh
+/opt/ros/melodic/.rosinstall
+/opt/ros/melodic/lib/pkgconfig/roscpp_serialization.pc
+/opt/ros/melodic/share/roscpp_serialization/cmake/roscpp_serializationConfig.cmake
+/opt/ros/melodic/share/roscpp_serialization/cmake/roscpp_serializationConfig-version.cmake
+/opt/ros/melodic/share/roscpp_serialization/package.xml
+/opt/ros/melodic/lib/libroscpp_serialization.so
+/opt/ros/melodic/include/ros/serialization.h
+/opt/ros/melodic/include/ros/roscpp_serialization_macros.h
+/opt/ros/melodic/include/ros/serialized_message.h

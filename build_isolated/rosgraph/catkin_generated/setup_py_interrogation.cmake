@@ -1,0 +1,7 @@
+set(rosgraph_SETUP_PY_SETUP_MODULE "distutils.core")
+set(rosgraph_SETUP_PY_VERSION "1.14.13")
+set(rosgraph_SETUP_PY_SCRIPTS "scripts/rosgraph")
+set(rosgraph_SETUP_PY_PACKAGES "rosgraph")
+set(rosgraph_SETUP_PY_PACKAGE_DIRS "src/rosgraph")
+set(rosgraph_SETUP_PY_MODULES "")
+set(rosgraph_SETUP_PY_MODULE_DIRS "")

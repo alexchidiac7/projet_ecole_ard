@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/devel_isolated/rosbag
+
+Name: rosbag
+Description: Description of rosbag
+Version: 1.14.13
+Cflags: -I/home/pi/ros_catkin_ws/src/ros_comm/rosbag/include
+Libs: -L${prefix}/lib -lrosbag
+Requires: rosbag_storage rosconsole roscpp std_srvs topic_tools xmlrpcpp

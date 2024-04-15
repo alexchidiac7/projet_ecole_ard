@@ -1,0 +1,7 @@
+set(biotac_log_parser_SETUP_PY_SETUP_MODULE "distutils.core")
+set(biotac_log_parser_SETUP_PY_VERSION "0.1.0")
+set(biotac_log_parser_SETUP_PY_SCRIPTS "scripts/parse_log_hdf5.py;scripts/parse_log_json.py;scripts/parse_log_pytable.py")
+set(biotac_log_parser_SETUP_PY_PACKAGES "biotac_log_parser")
+set(biotac_log_parser_SETUP_PY_PACKAGE_DIRS "src/biotac_log_parser")
+set(biotac_log_parser_SETUP_PY_MODULES "")
+set(biotac_log_parser_SETUP_PY_MODULE_DIRS "")

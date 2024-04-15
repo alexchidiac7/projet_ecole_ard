@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/devel_isolated/catkin
+
+Name: catkin
+Description: Description of catkin
+Version: 0.7.29
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

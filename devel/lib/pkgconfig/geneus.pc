@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/devel
+
+Name: geneus
+Description: Description of geneus
+Version: 2.2.6
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: genmsg

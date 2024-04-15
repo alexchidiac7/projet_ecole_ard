@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -O3 -DNDEBUG  -shared -Wl,-soname,libgmock_main.so -o libgmock_main.so CMakeFiles/gmock_main.dir/src/gmock_main.cc.o  -Wl,-rpath,/home/pi/ros_catkin_ws/build_isolated/rosgraph/gtest/googlemock:/home/pi/ros_catkin_ws/build_isolated/rosgraph/gtest/googlemock/gtest libgmock.so gtest/libgtest.so -lpthread 

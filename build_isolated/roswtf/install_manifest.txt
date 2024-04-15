@@ -1,0 +1,13 @@
+/opt/ros/melodic/_setup_util.py
+/opt/ros/melodic/env.sh
+/opt/ros/melodic/setup.bash
+/opt/ros/melodic/local_setup.bash
+/opt/ros/melodic/setup.sh
+/opt/ros/melodic/local_setup.sh
+/opt/ros/melodic/setup.zsh
+/opt/ros/melodic/local_setup.zsh
+/opt/ros/melodic/.rosinstall
+/opt/ros/melodic/lib/pkgconfig/roswtf.pc
+/opt/ros/melodic/share/roswtf/cmake/roswtfConfig.cmake
+/opt/ros/melodic/share/roswtf/cmake/roswtfConfig-version.cmake
+/opt/ros/melodic/share/roswtf/package.xml

@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/devel
+
+Name: rospack
+Description: Description of rospack
+Version: 2.5.6
+Cflags: -I/home/pi/ros_catkin_ws/src/rospack/include -I/usr/include
+Libs: -L${prefix}/lib -lrospack /usr/lib/arm-linux-gnueabihf/libpython2.7.so /usr/lib/arm-linux-gnueabihf/libboost_filesystem.so /usr/lib/arm-linux-gnueabihf/libboost_program_options.so /usr/lib/arm-linux-gnueabihf/libboost_system.so /usr/lib/arm-linux-gnueabihf/libtinyxml2.so
+Requires: 

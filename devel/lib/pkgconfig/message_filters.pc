@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/devel
+
+Name: message_filters
+Description: Description of message_filters
+Version: 1.14.13
+Cflags: -I/home/pi/ros_catkin_ws/src/ros_comm/message_filters/include
+Libs: -L${prefix}/lib -lmessage_filters
+Requires: roscpp rosconsole

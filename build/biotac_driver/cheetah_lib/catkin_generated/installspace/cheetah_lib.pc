@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/install
+
+Name: cheetah_lib
+Description: Description of cheetah_lib
+Version: 0.1.0
+Cflags: 
+Libs: -L${prefix}/lib -lcheetah
+Requires: 

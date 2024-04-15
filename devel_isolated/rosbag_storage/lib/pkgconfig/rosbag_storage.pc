@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/devel_isolated/rosbag_storage
+
+Name: rosbag_storage
+Description: Description of rosbag_storage
+Version: 1.14.13
+Cflags: -I/home/pi/ros_catkin_ws/src/ros_comm/rosbag_storage/include -I/usr/include
+Libs: -L${prefix}/lib -lrosbag_storage /usr/lib/arm-linux-gnueabihf/libconsole_bridge.so.0.4 /usr/lib/arm-linux-gnueabihf/libboost_date_time.so /usr/lib/arm-linux-gnueabihf/libboost_filesystem.so /usr/lib/arm-linux-gnueabihf/libboost_program_options.so /usr/lib/arm-linux-gnueabihf/libboost_regex.so /usr/lib/arm-linux-gnueabihf/libboost_system.so
+Requires: pluginlib roslz4

@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/devel
+
+Name: rostest
+Description: Description of rostest
+Version: 1.14.13
+Cflags: -I/home/pi/ros_catkin_ws/src/ros_comm/rostest/include -I/usr/include
+Libs: -L${prefix}/lib /usr/lib/arm-linux-gnueabihf/libboost_system.so /usr/lib/arm-linux-gnueabihf/libboost_thread.so -pthread /usr/lib/arm-linux-gnueabihf/libboost_chrono.so /usr/lib/arm-linux-gnueabihf/libboost_date_time.so /usr/lib/arm-linux-gnueabihf/libboost_atomic.so
+Requires: 

@@ -1,0 +1,13 @@
+/opt/ros/melodic/_setup_util.py
+/opt/ros/melodic/env.sh
+/opt/ros/melodic/setup.bash
+/opt/ros/melodic/local_setup.bash
+/opt/ros/melodic/setup.sh
+/opt/ros/melodic/local_setup.sh
+/opt/ros/melodic/setup.zsh
+/opt/ros/melodic/local_setup.zsh
+/opt/ros/melodic/.rosinstall
+/opt/ros/melodic/lib/pkgconfig/message_generation.pc
+/opt/ros/melodic/share/message_generation/cmake/message_generationConfig.cmake
+/opt/ros/melodic/share/message_generation/cmake/message_generationConfig-version.cmake
+/opt/ros/melodic/share/message_generation/package.xml

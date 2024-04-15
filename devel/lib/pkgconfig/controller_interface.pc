@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/devel
+
+Name: controller_interface
+Description: Description of controller_interface
+Version: 0.18.4
+Cflags: -I/home/pi/ros_catkin_ws/src/ros_control/controller_interface/include
+Libs: -L${prefix}/lib 
+Requires: hardware_interface roscpp

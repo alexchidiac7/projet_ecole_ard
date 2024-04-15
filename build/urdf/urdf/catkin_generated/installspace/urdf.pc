@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/install
+
+Name: urdf
+Description: Description of urdf
+Version: 1.13.2
+Cflags: -I${prefix}/include -I/usr/include
+Libs: -L${prefix}/lib -lurdf /usr/lib/arm-linux-gnueabihf/liburdfdom_sensor.so /usr/lib/arm-linux-gnueabihf/liburdfdom_model_state.so /usr/lib/arm-linux-gnueabihf/liburdfdom_model.so /usr/lib/arm-linux-gnueabihf/liburdfdom_world.so /usr/lib/arm-linux-gnueabihf/libconsole_bridge.so.0.4 /usr/lib/arm-linux-gnueabihf/libboost_thread.so -pthread /usr/lib/arm-linux-gnueabihf/libboost_chrono.so /usr/lib/arm-linux-gnueabihf/libboost_system.so /usr/lib/arm-linux-gnueabihf/libboost_date_time.so /usr/lib/arm-linux-gnueabihf/libboost_atomic.so /usr/lib/arm-linux-gnueabihf/libtinyxml.so /usr/lib/arm-linux-gnueabihf/libtinyxml2.so
+Requires: pluginlib rosconsole_bridge roscpp

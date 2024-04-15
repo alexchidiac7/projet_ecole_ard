@@ -1,0 +1,8 @@
+prefix=/opt/ros/melodic
+
+Name: genmsg
+Description: Description of genmsg
+Version: 0.5.17
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

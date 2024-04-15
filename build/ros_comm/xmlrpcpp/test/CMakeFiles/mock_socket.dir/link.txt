@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC   -shared -Wl,-soname,libmock_socket.so -o /home/pi/ros_catkin_ws/devel/lib/libmock_socket.so CMakeFiles/mock_socket.dir/mock_socket.cpp.o   -L/home/pi/ros_catkin_ws/build/gtest  -Wl,-rpath,/home/pi/ros_catkin_ws/build/gtest:/home/pi/ros_catkin_ws/build/gtest/googlemock/gtest ../../../gtest/googlemock/gtest/libgtest.so -pthread 

@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/install
+
+Name: biotac_sensors
+Description: Description of biotac_sensors
+Version: 0.1.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime roscpp cheetah_lib std_msgs

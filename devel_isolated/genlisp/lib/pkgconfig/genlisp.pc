@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/devel_isolated/genlisp
+
+Name: genlisp
+Description: Description of genlisp
+Version: 0.4.16
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: genmsg

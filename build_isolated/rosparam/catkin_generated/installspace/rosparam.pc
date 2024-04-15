@@ -1,0 +1,8 @@
+prefix=/opt/ros/melodic
+
+Name: rosparam
+Description: Description of rosparam
+Version: 1.14.13
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

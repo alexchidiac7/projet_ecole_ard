@@ -1,0 +1,16 @@
+/opt/ros/melodic/_setup_util.py
+/opt/ros/melodic/env.sh
+/opt/ros/melodic/setup.bash
+/opt/ros/melodic/local_setup.bash
+/opt/ros/melodic/setup.sh
+/opt/ros/melodic/local_setup.sh
+/opt/ros/melodic/setup.zsh
+/opt/ros/melodic/local_setup.zsh
+/opt/ros/melodic/.rosinstall
+/opt/ros/melodic/lib/pkgconfig/rosgraph.pc
+/opt/ros/melodic/share/rosgraph/cmake/rosgraphConfig.cmake
+/opt/ros/melodic/share/rosgraph/cmake/rosgraphConfig-version.cmake
+/opt/ros/melodic/share/rosgraph/package.xml
+/opt/ros/melodic/etc/ros/python_logging.conf
+/opt/ros/melodic/share/rosgraph/conf/python_logging.conf
+/opt/ros/melodic/lib/rosgraph/rosgraph

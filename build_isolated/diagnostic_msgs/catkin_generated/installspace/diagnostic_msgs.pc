@@ -1,0 +1,8 @@
+prefix=/opt/ros/melodic
+
+Name: diagnostic_msgs
+Description: Description of diagnostic_msgs
+Version: 1.12.8
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime std_msgs

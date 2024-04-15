@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/devel
+
+Name: realtime_tools
+Description: Description of realtime_tools
+Version: 1.15.1
+Cflags: -I/home/pi/ros_catkin_ws/src/realtime_tools/include
+Libs: -L${prefix}/lib -lrealtime_tools
+Requires: roscpp

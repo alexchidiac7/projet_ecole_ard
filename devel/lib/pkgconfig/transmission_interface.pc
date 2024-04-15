@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/devel
+
+Name: transmission_interface
+Description: Description of transmission_interface
+Version: 0.18.4
+Cflags: -I/home/pi/ros_catkin_ws/src/ros_control/transmission_interface/include -I/usr/include
+Libs: -L${prefix}/lib -ltransmission_interface_parser -ltransmission_interface_loader -ltransmission_interface_loader_plugins /usr/lib/arm-linux-gnueabihf/libtinyxml.so
+Requires: hardware_interface pluginlib roscpp

@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/install
+
+Name: ros_environment
+Description: Description of ros_environment
+Version: 1.2.3
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

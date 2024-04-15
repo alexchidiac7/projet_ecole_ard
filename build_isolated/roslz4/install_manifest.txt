@@ -1,0 +1,16 @@
+/opt/ros/melodic/_setup_util.py
+/opt/ros/melodic/env.sh
+/opt/ros/melodic/setup.bash
+/opt/ros/melodic/local_setup.bash
+/opt/ros/melodic/setup.sh
+/opt/ros/melodic/local_setup.sh
+/opt/ros/melodic/setup.zsh
+/opt/ros/melodic/local_setup.zsh
+/opt/ros/melodic/.rosinstall
+/opt/ros/melodic/lib/pkgconfig/roslz4.pc
+/opt/ros/melodic/share/roslz4/cmake/roslz4Config.cmake
+/opt/ros/melodic/share/roslz4/cmake/roslz4Config-version.cmake
+/opt/ros/melodic/share/roslz4/package.xml
+/opt/ros/melodic/lib/libroslz4.so
+/opt/ros/melodic/lib/python2.7/dist-packages/roslz4/_roslz4.so
+/opt/ros/melodic/include/roslz4/lz4s.h

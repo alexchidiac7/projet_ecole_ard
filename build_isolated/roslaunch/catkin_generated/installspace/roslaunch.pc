@@ -1,0 +1,8 @@
+prefix=/opt/ros/melodic
+
+Name: roslaunch
+Description: Description of roslaunch
+Version: 1.14.13
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

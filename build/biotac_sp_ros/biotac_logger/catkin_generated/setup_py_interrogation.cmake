@@ -1,0 +1,7 @@
+set(biotac_logger_SETUP_PY_SETUP_MODULE "distutils.core")
+set(biotac_logger_SETUP_PY_VERSION "0.1.0")
+set(biotac_logger_SETUP_PY_SCRIPTS "scripts/biotac_json_logger.py")
+set(biotac_logger_SETUP_PY_PACKAGES "biotac_logger")
+set(biotac_logger_SETUP_PY_PACKAGE_DIRS "src/biotac_logger")
+set(biotac_logger_SETUP_PY_MODULES "")
+set(biotac_logger_SETUP_PY_MODULE_DIRS "")

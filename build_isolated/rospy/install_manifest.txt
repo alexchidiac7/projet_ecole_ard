@@ -1,0 +1,17 @@
+/opt/ros/melodic/_setup_util.py
+/opt/ros/melodic/env.sh
+/opt/ros/melodic/setup.bash
+/opt/ros/melodic/local_setup.bash
+/opt/ros/melodic/setup.sh
+/opt/ros/melodic/local_setup.sh
+/opt/ros/melodic/setup.zsh
+/opt/ros/melodic/local_setup.zsh
+/opt/ros/melodic/.rosinstall
+/opt/ros/melodic/lib/pkgconfig/rospy.pc
+/opt/ros/melodic/share/rospy/cmake/rospyConfig.cmake
+/opt/ros/melodic/share/rospy/cmake/rospyConfig-version.cmake
+/opt/ros/melodic/share/rospy/package.xml
+/opt/ros/melodic/share/rospy/rosbuild/rospy.cmake
+/opt/ros/melodic/share/rospy/rosbuild/scripts/genmsg_py.py
+/opt/ros/melodic/share/rospy/rosbuild/scripts/gensrv_py.py
+/opt/ros/melodic/share/rospy/rosbuild/scripts/genutil.py

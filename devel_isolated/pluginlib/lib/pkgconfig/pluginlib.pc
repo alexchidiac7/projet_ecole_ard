@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/devel_isolated/pluginlib
+
+Name: pluginlib
+Description: Description of pluginlib
+Version: 1.12.1
+Cflags: -I/home/pi/ros_catkin_ws/src/pluginlib/include -I/usr/include
+Libs: -L${prefix}/lib /usr/lib/arm-linux-gnueabihf/libboost_filesystem.so /usr/lib/arm-linux-gnueabihf/libboost_system.so /usr/lib/arm-linux-gnueabihf/libtinyxml2.so
+Requires: class_loader rosconsole roslib

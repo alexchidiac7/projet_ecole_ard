@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/devel_isolated/roslaunch
+
+Name: roslaunch
+Description: Description of roslaunch
+Version: 1.14.13
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

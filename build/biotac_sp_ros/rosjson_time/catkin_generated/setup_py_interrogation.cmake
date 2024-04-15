@@ -1,0 +1,7 @@
+set(rosjson_time_SETUP_PY_SETUP_MODULE "distutils.core")
+set(rosjson_time_SETUP_PY_VERSION "0.1.0")
+set(rosjson_time_SETUP_PY_SCRIPTS "")
+set(rosjson_time_SETUP_PY_PACKAGES "rosjson_time")
+set(rosjson_time_SETUP_PY_PACKAGE_DIRS "src/rosjson_time")
+set(rosjson_time_SETUP_PY_MODULES "")
+set(rosjson_time_SETUP_PY_MODULE_DIRS "")

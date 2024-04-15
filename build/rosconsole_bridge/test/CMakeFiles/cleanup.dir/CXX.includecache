@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/ros_catkin_ws/src/rosconsole_bridge/include/rosconsole_bridge/bridge.h
+ros/macros.h
+-
+console_bridge/console.h
+-
+
+/home/pi/ros_catkin_ws/src/rosconsole_bridge/test/cleanup.cpp
+console_bridge/console.h
+-
+rosconsole_bridge/bridge.h
+-
+
+/home/pi/ros_catkin_ws/src/roscpp_core/cpp_common/include/ros/macros.h
+

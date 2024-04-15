@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/install
+
+Name: class_loader
+Description: Description of class_loader
+Version: 0.4.1
+Cflags: -I${prefix}/include -I/usr/include
+Libs: -L${prefix}/lib -lclass_loader /usr/lib/arm-linux-gnueabihf/libboost_thread.so -pthread /usr/lib/arm-linux-gnueabihf/libboost_system.so /usr/lib/arm-linux-gnueabihf/libboost_chrono.so /usr/lib/arm-linux-gnueabihf/libboost_date_time.so /usr/lib/arm-linux-gnueabihf/libboost_atomic.so /usr/lib/libPocoFoundation.so -ldl /usr/lib/arm-linux-gnueabihf/libconsole_bridge.so.0.4
+Requires: 

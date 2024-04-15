@@ -1,0 +1,1 @@
+set(ORDERED_PATHS "/home/pi/ros_catkin_ws/src/roscpp_core/cpp_common/include;/usr/include")

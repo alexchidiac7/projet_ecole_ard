@@ -1,0 +1,8 @@
+prefix=/opt/ros/melodic
+
+Name: catkin
+Description: Description of catkin
+Version: 0.7.29
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

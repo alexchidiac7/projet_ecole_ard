@@ -1,0 +1,8 @@
+prefix=/opt/ros/melodic
+
+Name: rosbuild
+Description: Description of rosbuild
+Version: 1.14.9
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

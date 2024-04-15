@@ -1,0 +1,3 @@
+repository='external project URL'
+module='http://csc.kth.se/~fevb/downloads/cheetah-library-v3.05.zip'
+tag=''

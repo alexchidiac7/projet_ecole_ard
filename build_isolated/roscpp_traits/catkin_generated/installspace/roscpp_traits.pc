@@ -1,0 +1,8 @@
+prefix=/opt/ros/melodic
+
+Name: roscpp_traits
+Description: Description of roscpp_traits
+Version: 0.6.14
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: cpp_common rostime

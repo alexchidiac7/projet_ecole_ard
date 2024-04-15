@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/install
+
+Name: actionlib
+Description: Description of actionlib
+Version: 1.12.1
+Cflags: -I${prefix}/include -I/usr/include
+Libs: -L${prefix}/lib -lactionlib /usr/lib/arm-linux-gnueabihf/libboost_thread.so -pthread /usr/lib/arm-linux-gnueabihf/libboost_chrono.so /usr/lib/arm-linux-gnueabihf/libboost_system.so /usr/lib/arm-linux-gnueabihf/libboost_date_time.so /usr/lib/arm-linux-gnueabihf/libboost_atomic.so
+Requires: actionlib_msgs message_runtime roscpp std_msgs

@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/devel
+
+Name: joint_limits_interface
+Description: Description of joint_limits_interface
+Version: 0.18.4
+Cflags: -I/home/pi/ros_catkin_ws/src/ros_control/joint_limits_interface/include
+Libs: -L${prefix}/lib 
+Requires: hardware_interface roscpp urdf

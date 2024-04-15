@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/devel
+
+Name: biotac_sp_ros
+Description: Description of biotac_sp_ros
+Version: 0.1.0
+Cflags: -I/home/pi/ros_catkin_ws/devel/include -I/home/pi/ros_catkin_ws/src/biotac_sp_ros/biotac_sp_ros/include
+Libs: -L${prefix}/lib 
+Requires: roscpp cheetah_lib std_msgs

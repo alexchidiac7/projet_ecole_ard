@@ -1,0 +1,8 @@
+prefix=/opt/ros/melodic
+
+Name: genlisp
+Description: Description of genlisp
+Version: 0.4.16
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: genmsg

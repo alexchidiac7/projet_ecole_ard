@@ -1,0 +1,8 @@
+prefix=/opt/ros/melodic
+
+Name: roslib
+Description: Description of roslib
+Version: 1.14.9
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lroslib
+Requires: rospack

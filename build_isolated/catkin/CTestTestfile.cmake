@@ -1,0 +1,11 @@
+# CMake generated Testfile for 
+# Source directory: /home/pi/ros_catkin_ws/src/catkin
+# Build directory: /home/pi/ros_catkin_ws/build_isolated/catkin
+# 
+# This file includes the relevant testing commands required for 
+# testing this directory and lists subdirectories to be tested as well.
+add_test(_ctest_catkin_nosetests_test.local_tests "/home/pi/ros_catkin_ws/build_isolated/catkin/catkin_generated/env_cached.sh" "/usr/bin/python" "/home/pi/ros_catkin_ws/src/catkin/cmake/test/run_tests.py" "/home/pi/ros_catkin_ws/build_isolated/catkin/test_results/catkin/nosetests-test.local_tests.xml" "--return-code" "\"/usr/bin/cmake\" -E make_directory /home/pi/ros_catkin_ws/build_isolated/catkin/test_results/catkin" "/usr/bin/nosetests-2.7 -P --process-timeout=60 --where=/home/pi/ros_catkin_ws/src/catkin/test/local_tests --with-xunit --xunit-file=/home/pi/ros_catkin_ws/build_isolated/catkin/test_results/catkin/nosetests-test.local_tests.xml")
+set_tests_properties(_ctest_catkin_nosetests_test.local_tests PROPERTIES  _BACKTRACE_TRIPLES "/home/pi/ros_catkin_ws/src/catkin/cmake/test/tests.cmake;160;add_test;/home/pi/ros_catkin_ws/src/catkin/cmake/test/nosetests.cmake;83;catkin_run_tests_target;/home/pi/ros_catkin_ws/src/catkin/CMakeLists.txt;26;catkin_add_nosetests;/home/pi/ros_catkin_ws/src/catkin/CMakeLists.txt;0;")
+add_test(_ctest_catkin_nosetests_test.unit_tests "/home/pi/ros_catkin_ws/build_isolated/catkin/catkin_generated/env_cached.sh" "/usr/bin/python" "/home/pi/ros_catkin_ws/src/catkin/cmake/test/run_tests.py" "/home/pi/ros_catkin_ws/build_isolated/catkin/test_results/catkin/nosetests-test.unit_tests.xml" "--return-code" "\"/usr/bin/cmake\" -E make_directory /home/pi/ros_catkin_ws/build_isolated/catkin/test_results/catkin" "/usr/bin/nosetests-2.7 -P --process-timeout=60 --where=/home/pi/ros_catkin_ws/src/catkin/test/unit_tests --with-xunit --xunit-file=/home/pi/ros_catkin_ws/build_isolated/catkin/test_results/catkin/nosetests-test.unit_tests.xml")
+set_tests_properties(_ctest_catkin_nosetests_test.unit_tests PROPERTIES  _BACKTRACE_TRIPLES "/home/pi/ros_catkin_ws/src/catkin/cmake/test/tests.cmake;160;add_test;/home/pi/ros_catkin_ws/src/catkin/cmake/test/nosetests.cmake;83;catkin_run_tests_target;/home/pi/ros_catkin_ws/src/catkin/CMakeLists.txt;27;catkin_add_nosetests;/home/pi/ros_catkin_ws/src/catkin/CMakeLists.txt;0;")
+subdirs("gtest")

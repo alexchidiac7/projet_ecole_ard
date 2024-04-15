@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/install
+
+Name: roslisp
+Description: Description of roslisp
+Version: 1.9.24
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

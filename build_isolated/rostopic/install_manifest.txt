@@ -1,0 +1,14 @@
+/opt/ros/melodic/_setup_util.py
+/opt/ros/melodic/env.sh
+/opt/ros/melodic/setup.bash
+/opt/ros/melodic/local_setup.bash
+/opt/ros/melodic/setup.sh
+/opt/ros/melodic/local_setup.sh
+/opt/ros/melodic/setup.zsh
+/opt/ros/melodic/local_setup.zsh
+/opt/ros/melodic/.rosinstall
+/opt/ros/melodic/lib/pkgconfig/rostopic.pc
+/opt/ros/melodic/share/rostopic/cmake/rostopicConfig.cmake
+/opt/ros/melodic/share/rostopic/cmake/rostopicConfig-version.cmake
+/opt/ros/melodic/share/rostopic/package.xml
+/opt/ros/melodic/lib/rostopic/rostopic

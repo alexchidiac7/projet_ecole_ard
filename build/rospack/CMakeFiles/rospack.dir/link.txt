@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC   -shared -Wl,-soname,librospack.so -o /home/pi/ros_catkin_ws/devel/lib/librospack.so CMakeFiles/rospack.dir/src/rospack.cpp.o CMakeFiles/rospack.dir/src/rospack_backcompat.cpp.o CMakeFiles/rospack.dir/src/rospack_cmdline.cpp.o CMakeFiles/rospack.dir/src/utils.cpp.o  -ltinyxml2 -lboost_filesystem -lboost_program_options -lboost_system -lpython2.7 

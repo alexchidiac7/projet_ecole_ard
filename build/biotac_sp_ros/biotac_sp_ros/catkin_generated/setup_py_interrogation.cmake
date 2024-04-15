@@ -1,0 +1,7 @@
+set(biotac_sp_ros_SETUP_PY_SETUP_MODULE "distutils.core")
+set(biotac_sp_ros_SETUP_PY_VERSION "0.1.0")
+set(biotac_sp_ros_SETUP_PY_SCRIPTS "")
+set(biotac_sp_ros_SETUP_PY_PACKAGES "biotac_sp_ros")
+set(biotac_sp_ros_SETUP_PY_PACKAGE_DIRS "src/biotac_sp_ros")
+set(biotac_sp_ros_SETUP_PY_MODULES "")
+set(biotac_sp_ros_SETUP_PY_MODULE_DIRS "")

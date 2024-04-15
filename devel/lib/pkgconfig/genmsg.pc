@@ -1,0 +1,8 @@
+prefix=/home/pi/ros_catkin_ws/devel
+
+Name: genmsg
+Description: Description of genmsg
+Version: 0.5.17
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

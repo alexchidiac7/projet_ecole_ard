@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/ros_catkin_ws/src/biotac_sp_ros/biotac_sp_ros/include/biotac_sp_ros/biotac.h
+
+/home/pi/ros_catkin_ws/src/biotac_sp_ros/biotac_sp_ros/include/biotac_sp_ros/cheetah.h
+stdint.h
+-
+
+/home/pi/ros_catkin_ws/src/biotac_sp_ros/biotac_sp_ros/src/biotac.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+time.h
+-
+sys/time.h
+-
+unistd.h
+-
+Windows.h
+-
+biotac_sp_ros/cheetah.h
+/home/pi/ros_catkin_ws/src/biotac_sp_ros/biotac_sp_ros/src/biotac_sp_ros/cheetah.h
+biotac_sp_ros/biotac.h
+/home/pi/ros_catkin_ws/src/biotac_sp_ros/biotac_sp_ros/src/biotac_sp_ros/biotac.h
+
