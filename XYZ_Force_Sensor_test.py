@@ -34,8 +34,6 @@ now = datetime.now()
 dateAndTime = now.strftime("%Y-%m-%d_%H-%M-%S_")
 timeBegin = time.time()  # Initial target ForceZ value
 
-
-
 # function to update the plot
 def update_plot(responsesX,responsesY,responsesZ,timeList):
 
@@ -179,3 +177,5 @@ if __name__ == '__main__':
     Time_Inter = 10
     listener(target_ForceZ,Time_Inter,Max_Force,step) # STOPS RIGHT HERE
     print("in the end here?")
+
+#gytgtykejhfi
