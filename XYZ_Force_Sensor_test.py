@@ -18,7 +18,7 @@ import os
 
 
 #plt.ion()
-ser = serial.Serial('/dev/ttyUSB0',115200, timeout=1)
+ser = serial.Serial('/dev/ttyUSB0',115200, timeout=2)
 time.sleep(0.1)# open serial port - XYZ_Force_Sensor.
 
 # create an empty list to store the responses
