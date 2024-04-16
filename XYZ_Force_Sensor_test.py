@@ -104,6 +104,10 @@ def listener(target_ForceZ,Time_Inter,Max_Force,step):
                 responseX = ser.readline()
                 responseX = responseX.strip().decode()
                 print(f"received responseX:'{responseX}'")
+                # If responseX is empty, treat it as '0'
+                if responseX == "":
+                    print("Received an empty response for X. Treating as 0.")
+                    responseX = "0.00"  # Set to '0' as string, to be converted to float next.
                 ser.write(b'Y')
                 responseY = ser.readline()
                 responseY = responseY.strip().decode()
