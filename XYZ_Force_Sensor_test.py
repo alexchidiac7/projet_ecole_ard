@@ -108,6 +108,7 @@ def listener(target_ForceZ,Time_Inter,Max_Force,step):
                 responseY = ser.readline()
                 responseY = responseY.strip().decode()
                 ser.write(b'Z')
+                print(f"received responseY:'{responseY}'")
 
                 responseZ = ser.readline()
                 responseZ = responseZ.strip().decode()
