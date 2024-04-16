@@ -91,6 +91,7 @@ def listener(target_ForceZ,Time_Inter,Max_Force,step):
                 responseX = ser.readline() ## the program is stuck in here
                 print("It is stuck before this point?")                
                 responseX = responseX.strip().decode()
+                print(f"received responseX:'{responseX}'")
                 ser.write(b'Y')
                 responseY = ser.readline()
                 responseY = responseY.strip().decode()
