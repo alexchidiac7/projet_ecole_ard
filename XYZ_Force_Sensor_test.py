@@ -13,7 +13,7 @@ import sys
 from postep256usb import PoStep256USB
 from simple_pid import PID
 #plt.ion()
-ser = serial.Serial('/dev/ttyUSB0',115200)
+ser = serial.Serial('/dev/ttyUSB0',115200,timeout=1)
 time.sleep(0.1)# open serial port - XYZ_Force_Sensor.
 
 # create an empty list to store the responses
