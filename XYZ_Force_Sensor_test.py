@@ -198,5 +198,5 @@ if __name__ == '__main__':
     step = -0.5
     pid = PID(15, 10, 0.1, setpoint=target_ForceZ)
     pid.output_limits = (-20, 20)
-    Time_Inter = 25
+    Time_Inter = 10
     listener(target_ForceZ,Time_Inter,Max_Force,step)
