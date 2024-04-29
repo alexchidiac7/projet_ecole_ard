@@ -45,33 +45,43 @@ class MyGUI(tk.Tk):
             self.status_label.config(text="Script stopped",fg="red")
         else:
             print("no process is running")
-            self.status_label.config(text="no precess is running")
+            self.status_label.config(text="no process is running")
 
 
     def on_button_click(self):
         forceZ_value=self.entry.get()
-        if forceZ_value.strip():
-           print(f"entered value:{forceZ_value}")
-        try:
-            forceZ_value_float=float(forceZ_value)
-            command=['python3','./XYZ_Force_Sensor_test.py','--forcez',str(forceZ_value_float)]
-            self.process=subprocess.Popen(command)
-            print("XYZ_Force_Sensor_test started successfully...")
-        except ValueError:
+        if forceZ_value.strip() and forceZ_value.isnumeric():
+            print(f"entered value:{forceZ_value}")
+            try:
+                forceZ_value_float=float(forceZ_value)
+                command=['python3','./XYZ_Force_Sensor_test.py','--forcez',str(forceZ_value_float)]
+                self.process=subprocess.Popen(command)
+                print("XYZ_Force_Sensor_test started successfully...")
+            except ValueError:
+                messagebox.showerror("Error", "Please enter a valid number for the Z-axis force.")
+        else:
             messagebox.showerror("Error", "Please enter a valid number for the Z-axis force.")
-            
+
+
     def run_otherScripts(self):
         try:
-            if (subprocess.Popen(['python3', './CNC_Gcode.py']) ):
+            self.status_label.config(text="Running CNC_Gcode...", fg="blue")
+            if subprocess.run(['python3', './CNC_Gcode.py']).returncode==0:
+                self.status_label.config(text="CNC_Gcode completed successfully.", fg="green")
                 print("CNC_Gcode started successfully...")
             else:
-                print("error while running")
-            if(subprocess.Popen(['python3', './Mux_Keithley_V3.py'])):
+                self.status_label.config(text="Error while running CNC_Gcode.", fg="red")
+                print("error while running CNC_Gcode.")
+            self.status_label.config(text="Running Mux_Keithley_V3...", fg="blue")    
+            if subprocess.run(['python3', './Mux_Keithley_V3.py']).returncode==0:
+                self.status_label.config(text="Mux_Keithley_V3 completed successfully.", fg="green")
                 print("Mux_Keithley_V3 started successfully...")
             else:
-                print("error while running2")    
+                self.status_label.config(text="Error while running Mux_Keithley_V3.", fg="red")
+                print("error while running Mux_Keithley_V3.")    
         except Exception as e :
-            print(f"Error starting Scripts: {e}")    
+            self.status_label.config(text=f"Error starting scripts: {e}", fg="red")
+            messagebox.showerror("Error", f"Error starting Scripts: {e}")    
 
 
 if __name__ == "__main__":
