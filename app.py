@@ -8,6 +8,7 @@ class SimpleForm(tk.Tk):
         super().__init__()
         self.process = None  # Reference to the running process
         self.entries = []  # List to store rows of entries
+        self.rows = []  # List to store row frames for easy removal
         self.initUI()
 
     def initUI(self):
@@ -37,40 +38,70 @@ class SimpleForm(tk.Tk):
 
         # Button to add a new row of G-code inputs
         self.addGcodeButton = tk.Button(self, text='Add G-code Inputs', command=self.add_gcode_row)
-        self.addGcodeButton.pack(pady=10)
+        self.addGcodeButton.pack(side=tk.LEFT, padx=5, pady=10)
+
+        # Button to clear all G-code inputs
+        self.clearGcodeButton = tk.Button(self, text='Clear G-code Inputs', command=self.clear_gcode_rows)
+        self.clearGcodeButton.pack(side=tk.LEFT, padx=5, pady=10)
 
         # Button to save all G-codes to a file
         self.saveGcodeButton = tk.Button(self, text='Save G-codes to File', command=self.save_to_file)
         self.saveGcodeButton.pack()
 
     def add_gcode_row(self):
-        # Each row has 4 inputs for G, X, Y, and F
         row_frame = tk.Frame(self.entry_frame)
-        row_frame.pack(pady=5)
+        row_frame.pack(pady=5, fill=tk.X)
+        labels = ['X', 'Y', 'F']
         row = {}
-        for field in ['G', 'X', 'Y', 'F']:
-            entry = tk.Entry(row_frame, width=10)
-            entry.pack(side=tk.LEFT, padx=5)
+
+        # Setup an OptionMenu for G-code selection with user-friendly labels
+        g_values = {'Linear': 'G01', 'Pause': 'G04'}  # Mapping of labels to G-codes
+        g_var = tk.StringVar(row_frame)
+        g_var.set('Linear')  # default value is 'Linear'
+        g_menu = tk.OptionMenu(row_frame, g_var, *g_values.keys())
+        g_menu.pack(side=tk.LEFT, padx=5)
+        row['G'] = g_var
+
+
+        for field in labels:
+            field_frame = tk.Frame(row_frame)
+            field_frame.pack(side=tk.LEFT, padx=5, expand=True, fill=tk.X)
+            label = tk.Label(field_frame, text=field)
+            label.pack()
+            entry = tk.Entry(field_frame, width=10)
+            entry.pack()
             row[field] = entry
+
+
         self.entries.append(row)
+        self.rows.append(row_frame)  # Keep track of the row frame for removal
+
+    def clear_gcode_rows(self):
+        # Destroy all row frames and clear the entries list
+        for row_frame in self.rows:
+            row_frame.destroy()
+        self.entries.clear()
+        self.rows.clear()
 
     def save_to_file(self):
-        # Compile all entries into G-code format and save to a file
         filename = 'output_gcode.txt'
+        g_values = {'Linear': 'G01', 'Pause': 'G04'}  # Map labels to G-codes
         try:
             with open(filename, 'w') as file:
                 file.write("%\n")
                 for row in self.entries:
-                    g = row['G'].get()
+                    g_label = row['G'].get()
                     x = row['X'].get()
                     y = row['Y'].get()
                     f = row['F'].get()
-                    if g and x and y and f:  # Check if all fields are filled
-                        file.write(f"G{g} X{x} Y{y} F{f}\n")
+                    if g_label and x and y and f:
+                        g_code = g_values[g_label]  # Convert label to G-code
+                        file.write(f"{g_code} X{x} Y{y} F{f}\n")
                 file.write("%\n")
             messagebox.showinfo("Success", f"G-code saved to {filename}")
         except Exception as e:
             messagebox.showerror("Error", str(e))
+
 
     def on_click(self):
         z_force_value = self.lineEdit.get()
@@ -94,10 +125,8 @@ class SimpleForm(tk.Tk):
         try:
             subprocess.Popen(['python3', './CNC_Gcode.py'])
             print("CNC_Gcode.py started successfully.")
-
             subprocess.Popen(['python3', './Mux_Keithley_V3.py'])
             print("Mux_Keithley_V3.py started successfully.")
-
         except Exception as e:
             print(f"Error starting scripts: {e}")
 
