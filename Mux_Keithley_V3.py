@@ -88,7 +88,13 @@ def update_plot(channel3,channel6,channel1,timeList):
 
 #with open('current_measurements'+'dateAndTime'+.csv', 'w', newline='') as csvfile:
 v = 0
-with open("/home/pi/Desktop/Haptic_Bench/Measure/" + dateAndTime + suffix + ".txt" , "w") as file:
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+measures_dir = os.path.join(script_dir, 'measures_MUX')
+os.makedirs(measures_dir, exist_ok=True)
+file_path = os.path.join(measures_dir, dateAndTime + suffix + ".txt")
+
+with open(file_path , "w") as file:
     file.write("Time(s),channel0,channel1,channel2,channel3,channel4,channel5,channel6,channel7\n")
 
     # create a list of empty lists to hold current measurements for each channel

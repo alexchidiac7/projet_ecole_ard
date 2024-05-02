@@ -25,7 +25,13 @@ def listener():
     tng.API.StartFnW("/home/pi/Desktop/Haptic_Bench/Gcode/Gcode_X_Sp.txt")
     timeBegin = time.time()  
 
-    with open("/home/pi/Desktop/Haptic_Bench/Measure/" + dateAndTime + suffix + ".txt" , "w") as file:
+
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    measures_dir = os.path.join(script_dir, 'measures_CNC')
+    os.makedirs(measures_dir, exist_ok=True)
+    file_path = os.path.join(measures_dir, dateAndTime + suffix + ".txt")
+
+    with open(file_path, "w") as file:
         file.write("Time(s),X,Y,Z,Speed,\n")
         period = 0.5
         measurementNumber = 0.0

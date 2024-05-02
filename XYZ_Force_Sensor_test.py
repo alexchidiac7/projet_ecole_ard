@@ -84,7 +84,7 @@ def wait_for_position():
 def listener(target_ForceZ,Time_Inter,Max_Force,step):
     #responseZ = target_ForceZ
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    measures_dir = os.path.join(script_dir, 'measures')
+    measures_dir = os.path.join(script_dir, 'measures_Z')
     os.makedirs(measures_dir, exist_ok=True)
     file_path = os.path.join(measures_dir, dateAndTime + suffix + ".txt")
     with open(file_path, "w") as file:
