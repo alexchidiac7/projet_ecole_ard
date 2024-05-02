@@ -59,6 +59,7 @@ class SimpleForm(tk.Tk):
         filename = 'output_gcode.txt'
         try:
             with open(filename, 'w') as file:
+                file.write("%\n")
                 for row in self.entries:
                     g = row['G'].get()
                     x = row['X'].get()
@@ -66,6 +67,7 @@ class SimpleForm(tk.Tk):
                     f = row['F'].get()
                     if g and x and y and f:  # Check if all fields are filled
                         file.write(f"G{g} X{x} Y{y} F{f}\n")
+                file.write("%\n")
             messagebox.showinfo("Success", f"G-code saved to {filename}")
         except Exception as e:
             messagebox.showerror("Error", str(e))
