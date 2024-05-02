@@ -22,11 +22,15 @@ dateAndTime = now.strftime("%Y-%m-%d_%H-%M-%S_")
 
 def listener():
     #time.sleep(5)
-    tng.API.StartFnW("/home/pi/Desktop/Haptic_Bench/Gcode/Gcode_X_Sp.txt")
+    #tng.API.StartFnW("/home/pi/Desktop/Haptic_Bench/Gcode/Gcode_X_Sp.txt")
+    # Get the directory where the script is located
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    gcode_file_path = os.path.join(script_dir, 'output_gcode.txt')
+    tng.API.StartFnW(gcode_file_path)
+
     timeBegin = time.time()  
 
 
-    script_dir = os.path.dirname(os.path.abspath(__file__))
     measures_dir = os.path.join(script_dir, 'measures_CNC')
     os.makedirs(measures_dir, exist_ok=True)
     file_path = os.path.join(measures_dir, dateAndTime + suffix + ".txt")
