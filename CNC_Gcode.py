@@ -26,6 +26,7 @@ def listener():
     # Get the directory where the script is located
     script_dir = os.path.dirname(os.path.abspath(__file__))
     gcode_file_path = os.path.join(script_dir, 'output_gcode.txt')
+    print(gcode_file_path)
     tng.API.StartFnW(gcode_file_path)
 
     timeBegin = time.time()  
