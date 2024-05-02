@@ -51,30 +51,56 @@ class SimpleForm(tk.Tk):
     def add_gcode_row(self):
         row_frame = tk.Frame(self.entry_frame)
         row_frame.pack(pady=5, fill=tk.X)
-        labels = ['X', 'Y', 'F']
         row = {}
 
         # Setup an OptionMenu for G-code selection with user-friendly labels
         g_values = {'Linear': 'G01', 'Pause': 'G04'}  # Mapping of labels to G-codes
         g_var = tk.StringVar(row_frame)
         g_var.set('Linear')  # default value is 'Linear'
-        g_menu = tk.OptionMenu(row_frame, g_var, *g_values.keys())
+        g_menu = tk.OptionMenu(row_frame, g_var, *g_values.keys(), command=lambda value: self.update_row_fields(row_frame, row, value))
         g_menu.pack(side=tk.LEFT, padx=5)
         row['G'] = g_var
 
+        # Store widgets for later destruction
+        row['widgets'] = []
 
-        for field in labels:
-            field_frame = tk.Frame(row_frame)
-            field_frame.pack(side=tk.LEFT, padx=5, expand=True, fill=tk.X)
-            label = tk.Label(field_frame, text=field)
-            label.pack()
-            entry = tk.Entry(field_frame, width=10)
-            entry.pack()
-            row[field] = entry
-
+        # Initially create fields for 'Linear'
+        self.create_fields_for_mode(row_frame, row, 'Linear')
 
         self.entries.append(row)
-        self.rows.append(row_frame)  # Keep track of the row frame for removal
+        self.rows.append(row_frame)
+
+    def create_fields_for_mode(self, row_frame, row, mode):
+        # Clear existing widgets in the row except for the OptionMenu
+        for widget in row['widgets']:
+            widget.destroy()
+        row['widgets'].clear()
+
+        # Based on the mode, create appropriate fields
+        if mode == 'Pause':
+            # Create a field for P
+            p_entry = tk.Entry(row_frame, width=10)
+            p_entry.pack(side=tk.LEFT, padx=5)
+            row['P'] = p_entry
+            row['widgets'].append(p_entry)
+        else:
+            # Create fields for X, Y, F
+            for field in ['X', 'Y', 'F']:
+                field_frame = tk.Frame(row_frame)
+                field_frame.pack(side=tk.LEFT, padx=5, expand=True, fill=tk.X)
+                label = tk.Label(field_frame, text=field)
+                label.pack()
+                entry = tk.Entry(field_frame, width=10)
+                entry.pack()
+                row[field] = entry
+                row['widgets'].append(field_frame)
+
+    def update_row_fields(self, row_frame, row, mode):
+        # Update fields according to the mode (Linear or Pause)
+        self.create_fields_for_mode(row_frame, row, mode)
+
+        # Update fields according to the mode (Linear or Pause)
+        self.create_fields_for_mode(row_frame, row, mode if mode in ['Linear', 'Pause'] else 'Linear')
 
     def clear_gcode_rows(self):
         # Destroy all row frames and clear the entries list
@@ -91,17 +117,26 @@ class SimpleForm(tk.Tk):
                 file.write("%\n")
                 for row in self.entries:
                     g_label = row['G'].get()
-                    x = row['X'].get()
-                    y = row['Y'].get()
-                    f = row['F'].get()
-                    if g_label and x and y and f:
-                        g_code = g_values[g_label]  # Convert label to G-code
-                        file.write(f"{g_code} X{x} Y{y} F{f}\n")
+                    g_code = g_values[g_label]
+                    parameters = []
+                    if g_label == 'Pause':
+                        p = row.get('P', None)
+                        p = p.get() if p else ''
+                        if p:
+                            parameters.append(f"P{p}")
+                    else:
+                        for param in ['X', 'Y', 'F']:
+                            entry = row.get(param, None)
+                            val = entry.get() if entry else ''
+                            if val:
+                                parameters.append(f"{param}{val}")
+                    
+                    if parameters:
+                        file.write(f"{g_code} {' '.join(parameters)}\n")
                 file.write("%\n")
             messagebox.showinfo("Success", f"G-code saved to {filename}")
         except Exception as e:
             messagebox.showerror("Error", str(e))
-
 
     def on_click(self):
         z_force_value = self.lineEdit.get()
