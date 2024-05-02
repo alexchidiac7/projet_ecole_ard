@@ -89,7 +89,7 @@ def update_plot(channel3,channel6,channel1,timeList):
 #with open('current_measurements'+'dateAndTime'+.csv', 'w', newline='') as csvfile:
 v = 0
 
-script_dir = os.path.dirname(os.path.abspath(__file__))
+script_dir = "/home/pi/test_projet_ecole/"
 measures_dir = os.path.join(script_dir, 'measures_MUX')
 os.makedirs(measures_dir, exist_ok=True)
 file_path = os.path.join(measures_dir, dateAndTime + suffix + ".txt")
