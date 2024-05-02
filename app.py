@@ -1,17 +1,18 @@
-import subprocess
-import sys
 import tkinter as tk
 from tkinter import messagebox
+import subprocess
+import sys
 
 class SimpleForm(tk.Tk):
     def __init__(self):
         super().__init__()
         self.process = None  # Reference to the running process
+        self.entries = []  # List to store rows of entries
         self.initUI()
 
     def initUI(self):
-        self.title('Enter Z-axis Force')
-        self.geometry('280x150')
+        self.title('Control Panel')
+        self.geometry('800x400')
 
         self.label = tk.Label(self, text='Z-axis Force:')
         self.label.pack()
@@ -29,6 +30,45 @@ class SimpleForm(tk.Tk):
         # New button for running additional scripts
         self.runScriptsButton = tk.Button(self, text='Run CNC and Keithley', command=self.run_additional_scripts)
         self.runScriptsButton.pack()
+
+        # Frame to hold the entries
+        self.entry_frame = tk.Frame(self)
+        self.entry_frame.pack(fill=tk.BOTH, expand=True, pady=10)
+
+        # Button to add a new row of G-code inputs
+        self.addGcodeButton = tk.Button(self, text='Add G-code Inputs', command=self.add_gcode_row)
+        self.addGcodeButton.pack(pady=10)
+
+        # Button to save all G-codes to a file
+        self.saveGcodeButton = tk.Button(self, text='Save G-codes to File', command=self.save_to_file)
+        self.saveGcodeButton.pack()
+
+    def add_gcode_row(self):
+        # Each row has 4 inputs for G, X, Y, and F
+        row_frame = tk.Frame(self.entry_frame)
+        row_frame.pack(pady=5)
+        row = {}
+        for field in ['G', 'X', 'Y', 'F']:
+            entry = tk.Entry(row_frame, width=10)
+            entry.pack(side=tk.LEFT, padx=5)
+            row[field] = entry
+        self.entries.append(row)
+
+    def save_to_file(self):
+        # Compile all entries into G-code format and save to a file
+        filename = 'output_gcode.txt'
+        try:
+            with open(filename, 'w') as file:
+                for row in self.entries:
+                    g = row['G'].get()
+                    x = row['X'].get()
+                    y = row['Y'].get()
+                    f = row['F'].get()
+                    if g and x and y and f:  # Check if all fields are filled
+                        file.write(f"{g} X{x} Y{y} F{f}\n")
+            messagebox.showinfo("Success", f"G-code saved to {filename}")
+        except Exception as e:
+            messagebox.showerror("Error", str(e))
 
     def on_click(self):
         z_force_value = self.lineEdit.get()
