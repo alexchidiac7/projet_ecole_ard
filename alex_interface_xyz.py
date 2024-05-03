@@ -9,6 +9,9 @@ import sys
 from postep256usb import PoStep256USB
 from simple_pid import PID
 
+import argparse #1337
+import os 
+
 # Initialize serial port
 ser = serial.Serial('/dev/ttyUSB0', 115200, timeout=1)
 time.sleep(0.1)
