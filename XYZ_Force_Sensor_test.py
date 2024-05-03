@@ -41,10 +41,8 @@ signal.signal(signal.SIGTERM, signal_handler)
 # Cleanup resources function
 def cleanup():
     print("Cleaning up...")
-    if postep:
-        postep.run_sleep(True)
-    if ser.is_open:
-        ser.close()
+    postep.run_sleep(True)
+    ser.close()
 
 def listener(target_ForceZ, Time_Inter, Max_Force, step):
     global pid, postep
@@ -101,7 +99,6 @@ def listener(target_ForceZ, Time_Inter, Max_Force, step):
                     
             except KeyboardInterrupt:
                 print("Exiting program due to KeyboardInterrupt")
-                break
             finally:
                 cleanup()
 
