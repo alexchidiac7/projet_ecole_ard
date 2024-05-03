@@ -97,10 +97,16 @@ def listener(target_ForceZ,Time_Inter,Max_Force,step):
                 ser.write(b'Y')
                 responseY = ser.readline()
                 responseY = responseY.strip().decode()
+                if responseY == "":
+                    print("Received an empty response for Y. Treating as 0.")
+                    responseY = "0.00" 
                 ser.write(b'Z')
 
                 responseZ = ser.readline()
                 responseZ = responseZ.strip().decode()
+                if responseZ == "":
+                    print("Received an empty response for Z. Treating as 0.")
+                    responseZ = "0.00" 
                 if(time.time()-timeBegin > measurementNumber*period):
                     measurementNumber += 1
                     file.write(str(timeList[-1]) + "," +str(responseX) + ","+ str(responseY) + "," +str(responseZ)+"\n")
