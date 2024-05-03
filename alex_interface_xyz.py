@@ -59,6 +59,7 @@ def listener(target_ForceZ, Time_Inter, Max_Force, step):
             measurementNumber = 0.0
             u = Time_Inter
             while True:
+                timeList.append(time.time()-timeBegin)
                 ser.write(b'X')
                 responseX = ser.readline().strip().decode() or "0.00"
                 ser.write(b'Y')
