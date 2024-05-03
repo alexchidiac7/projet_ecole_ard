@@ -50,7 +50,7 @@ class MyGUI(tk.Tk):
 
     def on_button_click(self):
         forceZ_value=self.entry.get()
-        if forceZ_value.strip():
+        if forceZ_value.strip() and forceZ_value<2.5:
             try:
                 forceZ_value_float=float(forceZ_value)
                 print(f"entered value:{forceZ_value}")
