@@ -2,4 +2,4 @@
 
 Fiche d'utilisation du système
 
-Comment le system fonctionne?
+![steps](https://github.com/fga-eps-mds/2020.2-Anunbis/assets/54644626/47d53186-e999-4cc0-9c89-21109b96a186)
