@@ -143,15 +143,19 @@ class SimpleForm(tk.Tk):
         print(f"Entered Z-axis Force: {z_force_value}")
         try:
             z_force_value_float = float(z_force_value)
-            command = ['python3', './XYZ_Force_Sensor_test.py', '--forcez', str(z_force_value_float)]
+            command = ['python3', './alex_interface_xyz.py', '--forcez', str(z_force_value_float)]
             self.process = subprocess.Popen(command)  # Use Popen to run the script asynchronously
-            print("XYZ_Force_Sensor_test.py started successfully.")
+            print("alex_interface_xyz.py started successfully.")
         except ValueError:
             messagebox.showerror("Error", "Please enter a valid number for the Z-axis force.")
 
     def stop_script(self):
         if self.process is not None and self.process.poll() is None:
-            self.process.terminate()  # Send SIGTERM
+            try:
+                self.process.terminate()  # Attempt to terminate
+                self.process.wait(timeout=1)  # Wait a bit for the process to terminate
+            except subprocess.TimeoutExpired:
+                self.process.kill()  # Force kill if not terminated
             print("Process terminated.")
         else:
             print("No running process to terminate.")
