@@ -1,6 +1,5 @@
 # Connections électriques
 
-![connections](https://github.com/fga-eps-mds/2020.2-Anunbis/assets/54644626/e0cf58d3-40d3-46af-a506-fdd748fcfc00)
-
+![connections](https://github.com/alexchidiac7/projet_ecole_ard/assets/54644626/d6c402ad-51e5-4bcd-9ea2-80ddd8b2bfa7)
 
 
