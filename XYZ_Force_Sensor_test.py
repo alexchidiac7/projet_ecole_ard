@@ -15,7 +15,7 @@ from simple_pid import PID
 
 import argparse #1337
 import os 
-
+import signal
 
 #plt.ion()
 ser = serial.Serial('/dev/ttyUSB0',115200, timeout=5)
@@ -39,7 +39,20 @@ now = datetime.now()
 dateAndTime = now.strftime("%Y-%m-%d_%H-%M-%S_")
 timeBegin = time.time()  # Initial target ForceZ value
 
+def signal_handler(sig, frame):
+    print("Signal received, cleaning up...")
+    cleanup()
+    sys.exit(0)  # Exit after cleanup
 
+# Setup signal handling
+signal.signal(signal.SIGTERM, signal_handler)
+
+
+# Cleanup resources function
+def cleanup():
+    print("Cleaning up...")
+    postep.run_sleep(False)
+    ser.close()
 
 # function to update the plot
 def update_plot(responsesX,responsesY,responsesZ,timeList):
@@ -110,12 +123,12 @@ def listener(target_ForceZ,Time_Inter,Max_Force,step):
                     responseX = "0.00"  # Set to '0' as string, to be converted to float next.
                 ser.write(b'Y')
                 responseY = ser.readline()
-                responseY = responseY.strip().decode()
+                responseY = responseY.strip().decode() or "0.00"
                 ser.write(b'Z')
                 print(f"received responseY:'{responseY}'")
 
                 responseZ = ser.readline()
-                responseZ = responseZ.strip().decode()
+                responseZ = responseZ.strip().decode() or "0.00"
                 if(time.time()-timeBegin > measurementNumber*period):
                     measurementNumber += 1
                     file.write(str(timeList[-1]) + "," +str(responseX) + ","+ str(responseY) + "," +str(responseZ)+"\n")
@@ -156,10 +169,10 @@ def listener(target_ForceZ,Time_Inter,Max_Force,step):
                 #update_plot(responsesX,responsesY,responsesZ,timeList)
 
             except KeyboardInterrupt:
-                print("Exiting program")
-                postep.run_sleep(False)
-                ser.close()
-                exit()
+                print("Exiting program due to KeyboardInterrupt")
+            finally:
+                print("called finally")
+                cleanup()
                 # write a stringclose port
 
 #===============================================================================
@@ -203,5 +216,13 @@ if __name__ == '__main__':
     step = -0.5
     pid = PID(15, 10, 0.1, setpoint=target_ForceZ)
     pid.output_limits = (-20, 20)
-    Time_Inter = 10
-    listener(target_ForceZ,Time_Inter,Max_Force,step)
+    Time_Inter = 25
+
+    try:
+        listener(target_ForceZ,Time_Inter,Max_Force,step)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    finally:
+        print("called from main")
+        cleanup()
+
