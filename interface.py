@@ -1,4 +1,6 @@
 import tkinter as tk
+import threading
+import time
 import subprocess
 import sys
 from tkinter import messagebox
@@ -10,6 +12,9 @@ class MyGUI(tk.Tk):
         self.title("Z-AXIS Force")
         self.geometry("600x400")
         self.entry=None
+        self.process=None
+        self.forceZ_label=None
+        self.current_position = tk.StringVar()
         self.initUI()
 
     def initUI(self):
@@ -38,6 +43,10 @@ class MyGUI(tk.Tk):
        btn.pack(anchor="n",expand=True,pady=15,padx=20)
        btn1.pack(anchor="n",expand=True,pady=15,padx=20)
        btn2.pack(anchor="n",expand=True,pady=15,padx=20)
+
+       self.current_position_label = tk.Label(master=frame, textvariable=self.current_position, bg="#424242", fg="white")
+       self.current_position_label.pack(anchor="s", expand=True, pady=10, padx=30)
+       
     def break_script(self):
         if self.process is not None and self.process.poll() is None: #poll() lorsque le process est en cours elle retourne none sinon elle retourne le résultat du process mais ici on l'a utilisé que pour none
             self.process.terminate()
@@ -83,7 +92,11 @@ class MyGUI(tk.Tk):
         except Exception as e :
             self.status_label.config(text=f"Error starting scripts: {e}", fg="red")
             messagebox.showerror("Error", f"Error starting Scripts: {e}")    
-
+    
+    def update_current_position(self):
+        for position in range (0,2.5):
+            self.current_position.set(str(position))
+            time.sleep(1)
 
 if __name__ == "__main__":
     app = MyGUI()
