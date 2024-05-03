@@ -80,111 +80,101 @@ def wait_for_position():
         time.sleep(0.1)
 
 def listener(target_ForceZ,Time_Inter,Max_Force,step):
-
-    try:
-        #responseZ = target_ForceZ
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        measures_dir = os.path.join(script_dir, 'measures')
-        os.makedirs(measures_dir, exist_ok=True)
-        file_path = os.path.join(measures_dir, dateAndTime + suffix + ".txt")
-        with open(file_path, "w") as file:
-        #with open("/home/pi/Desktop/Haptic_Bench/Measure/" + dateAndTime + suffix + ".txt", "w") as file:
+    #responseZ = target_ForceZ
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    measures_dir = os.path.join(script_dir, 'measures')
+    os.makedirs(measures_dir, exist_ok=True)
+    file_path = os.path.join(measures_dir, dateAndTime + suffix + ".txt")
+    with open(file_path, "w") as file:
+#    with open("/home/pi/Desktop/Haptic_Bench/Measure/" + dateAndTime + suffix + ".txt", "w") as file:
 
 
-            file.write("Time(s),Force_X,Force_Y(N),Force_Z\n")
-            period = 0.5
-            measurementNumber = 0.0
-            u = Time_Inter
-            while True:
-                try:
-                    timeList.append(time.time()-timeBegin)
-                    #print(timeList)
-                    ser.write(b'X')
-                    print("step1: done")
-                    responseX = ser.readline()
-                    responseX = responseX.strip().decode()
-                    print(f"received responseX:'{responseX}'")
-                    # If responseX is empty, treat it as '0'
-                    if responseX == "":
-                        print("Received an empty response for X. Treating as 0.")
-                        responseX = "0.00"  # Set to '0' as string, to be converted to float next.
-                    ser.write(b'Y')
-                    responseY = ser.readline()
-                    responseY = responseY.strip().decode()
-                    ser.write(b'Z')
-                    print(f"received responseY:'{responseY}'")
+        file.write("Time(s),Force_X,Force_Y(N),Force_Z\n")
+        period = 0.5
+        measurementNumber = 0.0
+        u = Time_Inter
+        while True:
+            try:
+                timeList.append(time.time()-timeBegin)
+                #print(timeList)
+                ser.write(b'X')
+                print("step1: done")
+                responseX = ser.readline()
+                responseX = responseX.strip().decode()
+                print(f"received responseX:'{responseX}'")
+                # If responseX is empty, treat it as '0'
+                if responseX == "":
+                    print("Received an empty response for X. Treating as 0.")
+                    responseX = "0.00"  # Set to '0' as string, to be converted to float next.
+                ser.write(b'Y')
+                responseY = ser.readline()
+                responseY = responseY.strip().decode()
+                ser.write(b'Z')
+                print(f"received responseY:'{responseY}'")
 
-                    responseZ = ser.readline()
-                    responseZ = responseZ.strip().decode()
-                    if(time.time()-timeBegin > measurementNumber*period):
-                        measurementNumber += 1
-                        file.write(str(timeList[-1]) + "," +str(responseX) + ","+ str(responseY) + "," +str(responseZ)+"\n")
-                    #postep.move_speed(100,"acw")
-                    # convert the response to a float
-                    responseX = float(responseX)
-                    responseY = float(responseY)
-                    responseZ = float(responseZ)
-                    motorSpeed = float(pid(responseZ))
-                    print(motorSpeed)
-                    print(responseZ)
-                    if (motorSpeed>0):
-                        print("down")
-                        postep.move_speed(abs(motorSpeed),"acw")
+                responseZ = ser.readline()
+                responseZ = responseZ.strip().decode()
+                if(time.time()-timeBegin > measurementNumber*period):
+                    measurementNumber += 1
+                    file.write(str(timeList[-1]) + "," +str(responseX) + ","+ str(responseY) + "," +str(responseZ)+"\n")
+                #postep.move_speed(100,"acw")
+                # convert the response to a float
+                responseX = float(responseX)
+                responseY = float(responseY)
+                responseZ = float(responseZ)
+                motorSpeed = float(pid(responseZ))
+                print(motorSpeed)
+                print(responseZ)
+                if (motorSpeed>0):
+                    print("down")
+                    postep.move_speed(abs(motorSpeed),"acw")
 
-                    else:
-                        print("up")
-                        postep.move_speed(abs(motorSpeed),"cw")
+                else:
+                    print("up")
+                    postep.move_speed(abs(motorSpeed),"cw")
 
-                    if (20 < abs(float(responseZ))):
-                        postep.run_sleep(True)
+                if (20 < abs(float(responseZ))):
+                    postep.run_sleep(False)
 
 
-                    # append the response to the list
-                    responsesX.append(responseX)
-                    responsesY.append(responseY)
-                    responsesZ.append(responseZ)
-                    if (time.time()-timeBegin > Time_Inter) and (target_ForceZ>Max_Force):
-                        target_ForceZ += step
-                        pid.setpoint= target_ForceZ
-                        Time_Inter = Time_Inter + u
-                    print("Time_Inter=", Time_Inter)
-                
-                        
-                        
+                # append the response to the list
+                responsesX.append(responseX)
+                responsesY.append(responseY)
+                responsesZ.append(responseZ)
+                if (time.time()-timeBegin > Time_Inter) and (target_ForceZ>Max_Force):
+                    target_ForceZ += step
+                    pid.setpoint= target_ForceZ
+                    Time_Inter = Time_Inter + u
+                print("Time_Inter=", Time_Inter)
+               
                     
-                    #update the plot
-                    #update_plot(responsesX,responsesY,responsesZ,timeList)
+                    
+                
+                #update the plot
+                #update_plot(responsesX,responsesY,responsesZ,timeList)
 
-                except KeyboardInterrupt:
-                    print("Exiting program")
-                    postep.run_sleep(True)
-                    ser.close()
-                    exit()
-                    # write a stringclose port
-
-    except KeyboardInterrupt:
-        print("Interrupt received, stopping...")
-    finally:
-        print("Cleaning up...")
-        postep.run_sleep(True)
-        ser.close()
-        sys.exit(0)
+            except KeyboardInterrupt:
+                print("Exiting program")
+                postep.run_sleep(False)
+                ser.close()
+                exit()
+                # write a stringclose port
 
 #===============================================================================
 # MAIN METHOD
 #===============================================================================
 if __name__ == '__main__':
 	# Parse command-line arguments #1337
-#     parser = argparse.ArgumentParser(description='Run XYZ force sensor test.') #1337
-#     parser.add_argument('--forcez', type=float, help='Target Z-axis force', required=True) #1337
-#     args = parser.parse_args() #1337
+    parser = argparse.ArgumentParser(description='Run XYZ force sensor test.') #1337
+    parser.add_argument('--forcez', type=float, help='Target Z-axis force', required=True) #1337
+    args = parser.parse_args() #1337
 
-# # Use the provided target force Z
-#     target_ForceZ = args.forcez #1337
-# # Print or log the received target force Z value #1337
-#     print("Received target force Z:", target_ForceZ) #1337
+# Use the provided target force Z
+    target_ForceZ = args.forcez #1337
+# Print or log the received target force Z value #1337
+    print("Received target force Z:", target_ForceZ) #1337
 
-    postep = PoStep256USB(logging.INFO)
+
 
 
     print("[Initialising XYZ_visualiser...]\n")
@@ -206,7 +196,7 @@ if __name__ == '__main__':
     # set the motor to run or sleep
     #time.sleep(5)
     postep.run_sleep(True)
-    target_ForceZ =-0.5 #1337
+    #target_ForceZ =-0.5 #1337
     Max_Force = -3
     step = -0.5
     pid = PID(15, 10, 0.1, setpoint=target_ForceZ)

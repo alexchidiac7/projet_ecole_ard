@@ -90,6 +90,10 @@ def listener(target_ForceZ,Time_Inter,Max_Force,step):
                 ser.write(b'X')
                 responseX = ser.readline()
                 responseX = responseX.strip().decode()
+
+                if responseX == "":
+                    print("Received an empty response for X. Treating as 0.")
+                    responseX = "0.00"
                 ser.write(b'Y')
                 responseY = ser.readline()
                 responseY = responseY.strip().decode()
