@@ -170,8 +170,8 @@ def listener(target_ForceZ,Time_Inter,Max_Force,step):
 
             except KeyboardInterrupt:
                 print("Exiting program due to KeyboardInterrupt")
-                postep.run_sleep(False)
             finally:
+                print("called finally")
                 cleanup()
                 # write a stringclose port
 
@@ -223,5 +223,6 @@ if __name__ == '__main__':
     except Exception as e:
         print(f"An error occurred: {e}")
     finally:
+        print("called from main")
         cleanup()
 
