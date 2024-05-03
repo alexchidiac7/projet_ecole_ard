@@ -35,7 +35,7 @@ class SimpleForm(tk.Tk):
         print(f"Entered Z-axis Force: {z_force_value}")
         try:
             z_force_value_float = float(z_force_value)
-            command = ['python3', './alex_interface_xyz.py', '--forcez', str(z_force_value_float)]
+            command = ['python3', './XYZ_Force_Sensor_test.py', '--forcez', str(z_force_value_float)]
             self.process = subprocess.Popen(command)  # Use Popen to run the script asynchronously
             print("XYZ_Force_Sensor_test.py started successfully.")
         except ValueError:

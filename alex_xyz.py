@@ -39,6 +39,9 @@ def cleanup():
 def listener(target_ForceZ, Time_Inter, Max_Force, step):
     """Monitor and control the motor based on sensor inputs."""
     try:
+        period = 0.5
+        measurementNumber = 0.0
+        u = Time_Inter
         while True:
             ser.write(b'X')
             responseX = ser.readline().strip().decode() or "0.00"
