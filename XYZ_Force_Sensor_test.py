@@ -88,7 +88,7 @@ def listener(target_ForceZ,Time_Inter,Max_Force,step):
         os.makedirs(measures_dir, exist_ok=True)
         file_path = os.path.join(measures_dir, dateAndTime + suffix + ".txt")
         with open(file_path, "w") as file:
-    #    with open("/home/pi/Desktop/Haptic_Bench/Measure/" + dateAndTime + suffix + ".txt", "w") as file:
+        #with open("/home/pi/Desktop/Haptic_Bench/Measure/" + dateAndTime + suffix + ".txt", "w") as file:
 
 
             file.write("Time(s),Force_X,Force_Y(N),Force_Z\n")
@@ -136,7 +136,7 @@ def listener(target_ForceZ,Time_Inter,Max_Force,step):
                         postep.move_speed(abs(motorSpeed),"cw")
 
                     if (20 < abs(float(responseZ))):
-                        postep.run_sleep(False)
+                        postep.run_sleep(True)
 
 
                     # append the response to the list
@@ -157,7 +157,7 @@ def listener(target_ForceZ,Time_Inter,Max_Force,step):
 
                 except KeyboardInterrupt:
                     print("Exiting program")
-                    postep.run_sleep(False)
+                    postep.run_sleep(True)
                     ser.close()
                     exit()
                     # write a stringclose port
@@ -166,7 +166,7 @@ def listener(target_ForceZ,Time_Inter,Max_Force,step):
         print("Interrupt received, stopping...")
     finally:
         print("Cleaning up...")
-        postep.run_sleep(False)
+        postep.run_sleep(True)
         ser.close()
         sys.exit(0)
 
