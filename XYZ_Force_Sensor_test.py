@@ -175,16 +175,16 @@ def listener(target_ForceZ,Time_Inter,Max_Force,step):
 #===============================================================================
 if __name__ == '__main__':
 	# Parse command-line arguments #1337
-    parser = argparse.ArgumentParser(description='Run XYZ force sensor test.') #1337
-    parser.add_argument('--forcez', type=float, help='Target Z-axis force', required=True) #1337
-    args = parser.parse_args() #1337
+#     parser = argparse.ArgumentParser(description='Run XYZ force sensor test.') #1337
+#     parser.add_argument('--forcez', type=float, help='Target Z-axis force', required=True) #1337
+#     args = parser.parse_args() #1337
 
-# Use the provided target force Z
-    target_ForceZ = args.forcez #1337
-# Print or log the received target force Z value #1337
-    print("Received target force Z:", target_ForceZ) #1337
+# # Use the provided target force Z
+#     target_ForceZ = args.forcez #1337
+# # Print or log the received target force Z value #1337
+#     print("Received target force Z:", target_ForceZ) #1337
 
-
+    postep = PoStep256USB(logging.INFO)
 
 
     print("[Initialising XYZ_visualiser...]\n")
@@ -206,7 +206,7 @@ if __name__ == '__main__':
     # set the motor to run or sleep
     #time.sleep(5)
     postep.run_sleep(True)
-    #target_ForceZ =-0.5 #1337
+    target_ForceZ =-0.5 #1337
     Max_Force = -3
     step = -0.5
     pid = PID(15, 10, 0.1, setpoint=target_ForceZ)
