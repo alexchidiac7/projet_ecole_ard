@@ -11,6 +11,7 @@ from simple_pid import PID
 
 import argparse #1337
 import os 
+import signal
 
 # Initialize serial port
 ser = serial.Serial('/dev/ttyUSB0', 115200, timeout=1)
@@ -37,6 +38,13 @@ def cleanup():
     print("Cleaning up...")
     postep.run_sleep(False)  # Ensure motor is stopped
     ser.close()
+
+def signal_handler(sig, frame):
+    print("Signal received, running cleanup...")
+    cleanup()
+    sys.exit(0)
+
+signal.signal(signal.SIGTERM, signal_handler)
 
 def listener(target_ForceZ, Time_Inter, Max_Force, step):
     """Monitor and control the motor based on sensor inputs."""
