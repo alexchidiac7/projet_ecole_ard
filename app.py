@@ -43,10 +43,15 @@ class SimpleForm(tk.Tk):
 
     def stop_script(self):
         if self.process is not None and self.process.poll() is None:
-            self.process.terminate()  # Send SIGTERM
+            try:
+                self.process.terminate()  # Attempt to terminate
+                self.process.wait(timeout=1)  # Wait a bit for the process to terminate
+            except subprocess.TimeoutExpired:
+                self.process.kill()  # Force kill if not terminated
             print("Process terminated.")
         else:
             print("No running process to terminate.")
+
 
     def run_additional_scripts(self):
         try:
