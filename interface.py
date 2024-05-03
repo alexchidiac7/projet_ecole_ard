@@ -50,13 +50,14 @@ class MyGUI(tk.Tk):
 
     def on_button_click(self):
         forceZ_value=self.entry.get()
-        if forceZ_value.strip() and forceZ_value<2.5:
+        if forceZ_value.strip() :
             try:
                 forceZ_value_float=float(forceZ_value)
-                print(f"entered value:{forceZ_value}")
-                command=['python3','./XYZ_Force_Sensor_test.py','--forcez',str(forceZ_value_float)]
-                self.process=subprocess.Popen(command)
-                print("XYZ_Force_Sensor_test started successfully...")
+                if forceZ_value_float < 2.5:
+                  print(f"entered value:{forceZ_value}")
+                  command=['python3','./XYZ_Force_Sensor_test.py','--forcez',str(forceZ_value_float)]
+                  self.process=subprocess.Popen(command)
+                  print("XYZ_Force_Sensor_test started successfully...")
             except ValueError:
                 messagebox.showerror("Error", "Please enter a valid number for the Z-axis force.")
         else:
