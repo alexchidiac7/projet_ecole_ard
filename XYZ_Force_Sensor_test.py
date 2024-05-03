@@ -15,7 +15,7 @@ from simple_pid import PID
 
 import argparse #1337
 import os 
-
+import signal
 
 #plt.ion()
 ser = serial.Serial('/dev/ttyUSB0',115200, timeout=5)
