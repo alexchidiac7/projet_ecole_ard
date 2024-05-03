@@ -29,15 +29,14 @@ timeBegin = time.time()
 pid = None
 postep = None
 
-# Signal handling for graceful shutdown
 def signal_handler(sig, frame):
-    print("Signal received, stopping...")
+    print("Signal received, cleaning up...")
     cleanup()
-    sys.exit(0)
+    sys.exit(0)  # Exit after cleanup
 
-# Register the signal handler
-signal.signal(signal.SIGINT, signal_handler)
+# Setup signal handling
 signal.signal(signal.SIGTERM, signal_handler)
+
 
 # Cleanup resources function
 def cleanup():

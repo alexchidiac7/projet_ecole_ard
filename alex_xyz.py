@@ -67,6 +67,12 @@ def listener(target_ForceZ, Time_Inter, Max_Force, step):
             if abs(responseZ) > 20:
                 postep.run_sleep(False)
 
+            if (time.time()-timeBegin > Time_Inter) and (target_ForceZ>Max_Force):
+                target_ForceZ += step
+                pid.setpoint= target_ForceZ
+                Time_Inter = Time_Inter + u
+            print("Time_Inter=", Time_Inter)
+
     except KeyboardInterrupt:
         print("Keyboard interrupt received, stopping...")
     finally:
