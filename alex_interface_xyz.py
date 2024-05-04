@@ -80,10 +80,10 @@ def listener(target_ForceZ, Time_Inter, Max_Force, step):
                 
                 # Control motor direction based on speed
                 if motorSpeed > 0:
-                    print("motorSpeed > 0, DOWN")
+                    print("motorSpeed > 0, it is going UP")
                     postep.move_speed(abs(motorSpeed), "acw")
                 else:
-                    print("motorSpeed < 0, UP")
+                    print("motorSpeed < 0, it is going DOWN")
                     postep.move_speed(abs(motorSpeed), "cw")
 
                 # Check force threshold to wake up or sleep motor
