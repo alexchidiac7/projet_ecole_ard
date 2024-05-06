@@ -28,9 +28,13 @@ class SimpleForm(tk.Tk):
         self.stopButton = tk.Button(self, text='Stop Script', command=self.stop_script)
         self.stopButton.pack()
 
-        # New button for running additional scripts
-        self.runScriptsButton = tk.Button(self, text='Run CNC and Keithley', command=self.run_additional_scripts)
-        self.runScriptsButton.pack()
+        # Button for running CNC_Gcode.py script
+        self.runCNCButton = tk.Button(self, text='Run CNC', command=self.run_cnc_script)
+        self.runCNCButton.pack()
+
+        # Button for running Mux_Keithley_V3.py script
+        self.runKeithleyButton = tk.Button(self, text='Run Keithley', command=self.run_keithley_script)
+        self.runKeithleyButton.pack()
 
         # Frame to hold the entries
         self.entry_frame = tk.Frame(self)
@@ -160,6 +164,7 @@ class SimpleForm(tk.Tk):
         else:
             print("No running process to terminate.")
 
+    # this runs both CNC and Keithley together
     def run_additional_scripts(self):
         try:
             subprocess.Popen(['python3', './CNC_Gcode.py'])
@@ -168,6 +173,21 @@ class SimpleForm(tk.Tk):
             print("Mux_Keithley_V3.py started successfully.")
         except Exception as e:
             print(f"Error starting scripts: {e}")
+
+
+    def run_cnc_script(self):
+        try:
+            subprocess.Popen(['python3', './CNC_Gcode.py'])
+            print("CNC_Gcode.py started successfully.")
+        except Exception as e:
+            print(f"Error starting CNC script: {e}")
+
+    def run_keithley_script(self):
+        try:
+            subprocess.Popen(['python3', './Mux_Keithley_V3.py'])
+            print("Mux_Keithley_V3.py started successfully.")
+        except Exception as e:
+            print(f"Error starting Keithley script: {e}")
 
 if __name__ == '__main__':
     app = SimpleForm()
