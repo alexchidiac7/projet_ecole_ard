@@ -5,6 +5,7 @@ import csv
 import time
 from datetime import datetime
 #plt.ion()
+import os
 
 # open a connection to the Keithley device
 smu = Keithley('ASRL/dev/ttyUSB1::INSTR', 5000)
