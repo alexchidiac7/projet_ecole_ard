@@ -4,8 +4,10 @@ import matplotlib.pyplot as plt
 import csv
 import time
 from datetime import datetime
-#plt.ion()
 import os
+
+# Enable interactive mode
+plt.ion()
 
 # open a connection to the Keithley device
 smu = Keithley('ASRL/dev/ttyUSB1::INSTR', 5000)
@@ -20,9 +22,10 @@ dateAndTime = now.strftime("%Y-%m-%d_%H-%M-%S_")
 # Keithley parameters
 iset                    = 10e-6                # current source target -- useless
 vset                    = 0                  # voc
-#sourceRange             = ()
 measurementRange        = 10e-3
-#Keithley configuration
+#sourceRange             = ()
+
+
 #Keithley configuration
 smu.reset()
 smu.mode_4W()
@@ -36,9 +39,14 @@ smu.set_s_level('v', vset)
 smu.set_V_source()
 smu.set_s_level( 'v', 0)
 smu.on()
+
+
+# Initialize measurement and time lists
 measurement = []
 timesList = []
-# create an empty list to store the responses
+
+
+# Initialize channel data lists
 channel0 = [0,0]
 channel1 = [0,0]
 channel2 = [0,0]
@@ -49,7 +57,9 @@ channel6 = [0,0]
 channel7 = [0,0]
 ite = []
 timeList = []
-# create a figure and a plot
+
+
+# Create a figure and a plot
 fig, (axX,axY,axZ) = plt.subplots(3,1)
 lineX, = axX.plot([], [])
 lineY, = axY.plot([], [])
@@ -171,7 +181,9 @@ with open(file_path , "w") as file:
                 if(time.time()-timeBegin > measurementNumber*period):
                     measurementNumber += 1
                     file.write(str(timesList[-1]) + "," +str(channel0[-1]) + ","+ str(channel1[-1]) + "," +str(channel2[-1])+ "," +str(channel3[-1])+ "," +str(channel4[-1])+ "," +str(channel5[-1]) +"," +str(channel6[-1]) + "," +str(channel7[-1]) + "\n")
-                #update_plot(channel1,channel3,channel6,ite)
+
+                    
+                update_plot(channel1,channel3,channel6,ite)
                 smu.clear_buf(1)
                 #time.sleep(1/10)
 
