@@ -66,33 +66,68 @@ lineY, = axY.plot([], [])
 lineZ, = axZ.plot([], [])
 
 
-# function to update the plot -really slow
-def update_plot(channel3,channel6,channel1,timeList):
-    for ax in [axX, axY, axZ]:
-        ax.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
-    # update the data of the plot
-    lineX.set_data(range(len(channel3)),channel3 )
-    lineY.set_data(range(len(channel6)), channel6)
-    lineZ.set_data(range(len(channel1)), channel1)
-    # set the limits of the plot
-    axX.set_xlim(0, len(channel3))
-    axY.set_xlim(0, len(channel6))
-    axZ.set_xlim(0, len(channel1))
-    axX.set_ylim(min(channel3), max(channel3))
-    axY.set_ylim(min(channel6), max(channel6))
-    axZ.set_ylim(min(channel1), max(channel1))
-    #axX.set_title("X Responses")
-    axX.set_xlabel("Point")
-    axX.set_ylabel("channel3")
-    #axY.set_title("Y Responses")
-    axY.set_xlabel("Point")
-    axY.set_ylabel("channel6")
-    #axZ.set_title("Z Responses")
-    axZ.set_xlabel("Point")
-    axZ.set_ylabel("channel1")
+def update_plot(channel0, channel1, channel2, channel3, channel4, channel5, channel6, channel7, timeList):
+    for ax in [ax0, ax1, ax2, ax3, ax4, ax5, ax6, ax7]:
+        ax.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
+        
+    # update the data of the plots
+    line0.set_data(range(len(channel0)), channel0)
+    line1.set_data(range(len(channel1)), channel1)
+    line2.set_data(range(len(channel2)), channel2)
+    line3.set_data(range(len(channel3)), channel3)
+    line4.set_data(range(len(channel4)), channel4)
+    line5.set_data(range(len(channel5)), channel5)
+    line6.set_data(range(len(channel6)), channel6)
+    line7.set_data(range(len(channel7)), channel7)
+    
+    # set the limits of the plots
+    ax0.set_xlim(0, len(channel0))
+    ax1.set_xlim(0, len(channel1))
+    ax2.set_xlim(0, len(channel2))
+    ax3.set_xlim(0, len(channel3))
+    ax4.set_xlim(0, len(channel4))
+    ax5.set_xlim(0, len(channel5))
+    ax6.set_xlim(0, len(channel6))
+    ax7.set_xlim(0, len(channel7))
+
+    ax0.set_ylim(min(channel0), max(channel0))
+    ax1.set_ylim(min(channel1), max(channel1))
+    ax2.set_ylim(min(channel2), max(channel2))
+    ax3.set_ylim(min(channel3), max(channel3))
+    ax4.set_ylim(min(channel4), max(channel4))
+    ax5.set_ylim(min(channel5), max(channel5))
+    ax6.set_ylim(min(channel6), max(channel6))
+    ax7.set_ylim(min(channel7), max(channel7))
+
+    # set titles and labels for each plot
+    ax0.set_xlabel("Point")
+    ax0.set_ylabel("Channel 0")
+
+    ax1.set_xlabel("Point")
+    ax1.set_ylabel("Channel 1")
+
+    ax2.set_xlabel("Point")
+    ax2.set_ylabel("Channel 2")
+
+    ax3.set_xlabel("Point")
+    ax3.set_ylabel("Channel 3")
+
+    ax4.set_xlabel("Point")
+    ax4.set_ylabel("Channel 4")
+
+    ax5.set_xlabel("Point")
+    ax5.set_ylabel("Channel 5")
+
+    ax6.set_xlabel("Point")
+    ax6.set_ylabel("Channel 6")
+
+    ax7.set_xlabel("Point")
+    ax7.set_ylabel("Channel 7")
+
     # redraw the plot
     fig.canvas.draw()
     fig.canvas.flush_events()
+
 # open the file in write mode
 #now = datetime.now()
 #dateAndTime = now.strftime("%Y-%m-%d_%H-%M-%S_")
