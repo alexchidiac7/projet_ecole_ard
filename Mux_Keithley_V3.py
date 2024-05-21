@@ -59,12 +59,18 @@ ite = []
 timeList = []
 
 
-# Create a figure and a plot
-fig, (axX,axY,axZ) = plt.subplots(3,1)
-lineX, = axX.plot([], [])
-lineY, = axY.plot([], [])
-lineZ, = axZ.plot([], [])
+# Create a figure and subplots for each channel
+fig, ((ax0, ax1, ax2, ax3), (ax4, ax5, ax6, ax7)) = plt.subplots(2, 4, figsize=(15, 10))
 
+# Initialize lines for each channel
+line0, = ax0.plot([], [])
+line1, = ax1.plot([], [])
+line2, = ax2.plot([], [])
+line3, = ax3.plot([], [])
+line4, = ax4.plot([], [])
+line5, = ax5.plot([], [])
+line6, = ax6.plot([], [])
+line7, = ax7.plot([], [])
 
 def update_plot(channel0, channel1, channel2, channel3, channel4, channel5, channel6, channel7, timeList):
     for ax in [ax0, ax1, ax2, ax3, ax4, ax5, ax6, ax7]:
