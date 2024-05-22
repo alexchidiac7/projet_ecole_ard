@@ -224,7 +224,8 @@ with open(file_path , "w") as file:
                     file.write(str(timesList[-1]) + "," +str(channel0[-1]) + ","+ str(channel1[-1]) + "," +str(channel2[-1])+ "," +str(channel3[-1])+ "," +str(channel4[-1])+ "," +str(channel5[-1]) +"," +str(channel6[-1]) + "," +str(channel7[-1]) + "\n")
 
                     
-                update_plot(channel0,channel1,channel2,channel3,channel4, channel5, channel6, channel7, ite)
+                if channel==7: 
+                    update_plot(channel0,channel1,channel2,channel3,channel4, channel5, channel6, channel7, ite)
                 smu.clear_buf(1)
                 #time.sleep(1/10)
 
