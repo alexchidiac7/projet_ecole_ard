@@ -200,7 +200,7 @@ class SimpleForm(tk.Tk):
         file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
         if file_path:
             try:
-                subprocess.Popen(['python', 'forces_plotter.py', file_path])
+                subprocess.Popen(['python3', 'forces_plotter.py', file_path])
                 print(f"forces_plotter.py started with file: {file_path}")
             except Exception as e:
                 messagebox.showerror("Error", f"Failed to start forces_plotter.py: {e}")
@@ -211,7 +211,7 @@ class SimpleForm(tk.Tk):
         file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
         if file_path:
             try:
-                subprocess.Popen(['python', 'waveguide_loss_plotter.py', file_path])
+                subprocess.Popen(['python3', 'waveguide_loss_plotter.py', file_path])
                 print(f"waveguide_loss_plotter.py started with file: {file_path}")
             except Exception as e:
                 messagebox.showerror("Error", f"Failed to start waveguide_loss_plotter.py: {e}")
