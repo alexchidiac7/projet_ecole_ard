@@ -16,48 +16,53 @@ class SimpleForm(tk.Tk):
         self.geometry('800x400')
 
         self.label = tk.Label(self, text='Z-axis Force:')
-        self.label.pack()
+        self.label.grid(row=0, column=0, padx=10, pady=10, sticky='e')
 
         self.lineEdit = tk.Entry(self)
-        self.lineEdit.pack()
+        self.lineEdit.grid(row=0, column=1, padx=10, pady=10, sticky='w')
 
         self.pushButton = tk.Button(self, text='Submit Z-axis Force', command=self.on_click)
-        self.pushButton.pack()
-
-        # Button to stop the XYZ_Force_Sensor_test.py script
-        self.stopButton = tk.Button(self, text='Stop Script', command=self.stop_script)
-        self.stopButton.pack()
+        self.pushButton.grid(row=0, column=2, padx=10, pady=10, sticky='w')
 
         # Button for running CNC_Gcode.py script
         self.runCNCButton = tk.Button(self, text='Run CNC', command=self.run_cnc_script)
-        self.runCNCButton.pack()
+        self.runCNCButton.grid(row=1, column=0, padx=10, pady=10, sticky='e')
 
         # Button for running Mux_Keithley_V3.py script
         self.runKeithleyButton = tk.Button(self, text='Run Keithley', command=self.run_keithley_script)
-        self.runKeithleyButton.pack()
+        self.runKeithleyButton.grid(row=1, column=1, padx=10, pady=10, sticky='w')
 
-        # Button to select and run forces_plotter.py
-        self.runForcesPlotterButton = tk.Button(self, text='Run Forces Plotter', command=self.run_forces_plotter)
-        self.runForcesPlotterButton.pack()
+        # Button to stop the XYZ_Force_Sensor_test.py script
+        self.stopButton = tk.Button(self, text='Stop Script', command=self.stop_script)
+        self.stopButton.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
 
-        self.runWaveguideLossPlotterButton = tk.Button(self, text='Run Waveguide Loss Plotter', command=self.run_waveguide_loss_plotter)
-        self.runWaveguideLossPlotterButton.pack()
-        
         # Frame to hold the entries
         self.entry_frame = tk.Frame(self)
-        self.entry_frame.pack(fill=tk.BOTH, expand=True, pady=10)
+        self.entry_frame.grid(row=3, column=0, columnspan=3, padx=10, pady=10, sticky='nsew')
+
+        # Frame to hold the G-code buttons
+        self.gcode_button_frame = tk.Frame(self)
+        self.gcode_button_frame.grid(row=4, column=0, columnspan=3, padx=10, pady=10, sticky='nsew')
 
         # Button to add a new row of G-code inputs
-        self.addGcodeButton = tk.Button(self, text='Add G-code Inputs', command=self.add_gcode_row)
-        self.addGcodeButton.pack(side=tk.LEFT, padx=5, pady=10)
+        self.addGcodeButton = tk.Button(self.gcode_button_frame, text='Add G-code Inputs', command=self.add_gcode_row)
+        self.addGcodeButton.grid(row=0, column=0, padx=5, pady=10)
 
         # Button to clear all G-code inputs
-        self.clearGcodeButton = tk.Button(self, text='Clear G-code Inputs', command=self.clear_gcode_rows)
-        self.clearGcodeButton.pack(side=tk.LEFT, padx=5, pady=10)
+        self.clearGcodeButton = tk.Button(self.gcode_button_frame, text='Clear G-code Inputs', command=self.clear_gcode_rows)
+        self.clearGcodeButton.grid(row=0, column=1, padx=5, pady=10)
 
         # Button to save all G-codes to a file
-        self.saveGcodeButton = tk.Button(self, text='Save G-codes to File', command=self.save_to_file)
-        self.saveGcodeButton.pack()
+        self.saveGcodeButton = tk.Button(self.gcode_button_frame, text='Save G-codes to File', command=self.save_to_file)
+        self.saveGcodeButton.grid(row=1, column=0, columnspan=2, pady=5)
+
+        # Button to select and run forces_plotter.py
+        self.runForcesPlotterButton = tk.Button(self.gcode_button_frame, text='Run Forces Plotter', command=self.run_forces_plotter)
+        self.runForcesPlotterButton.grid(row=2, column=0, columnspan=2, pady=5)
+
+        # Button to run waveguide loss plotter
+        self.runWaveguideLossPlotterButton = tk.Button(self.gcode_button_frame, text='Run Waveguide Loss Plotter', command=self.run_waveguide_loss_plotter)
+        self.runWaveguideLossPlotterButton.grid(row=3, column=0, columnspan=2, pady=5)
 
     def add_gcode_row(self):
         row_frame = tk.Frame(self.entry_frame)
