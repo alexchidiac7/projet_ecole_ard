@@ -88,6 +88,30 @@ class SimpleForm(tk.Tk):
         self.rows.append(row_frame)
 
     def create_fields_for_mode(self, row_frame, row, mode):
+        for widget in row['widgets']:
+            widget.destroy()
+        row['widgets'].clear()
+
+        if mode == 'Pause':
+            p_entry = tk.Entry(row_frame, width=10)
+            p_entry.pack(side=tk.LEFT, padx=5)
+            row['P'] = p_entry
+            row['widgets'].append(p_entry)
+        else:
+            for field in ['X (cm)', 'Y (cm)', 'Vitesse (cm/s)']:
+                field_frame = tk.Frame(row_frame)
+                field_frame.pack(side=tk.LEFT, padx=5, expand=True, fill=tk.X)
+                label = tk.Label(field_frame, text=field)
+                label.pack()
+                entry = tk.Entry(field_frame, width=10)
+                entry.pack()
+                if field == 'X (cm)':
+                    row['X'] = entry
+                elif field == 'Y (cm)':
+                    row['Y'] = entry
+                elif field == 'Vitesse (cm/s)':
+                    row['F'] = entry
+                row['widgets'].append(field_frame)
         # Clear existing widgets in the row except for the OptionMenu
         for widget in row['widgets']:
             widget.destroy()
@@ -146,14 +170,17 @@ class SimpleForm(tk.Tk):
                             entry = row.get(param, None)
                             val = entry.get() if entry else ''
                             if val:
+                                if param in ['X', 'Y']:
+                                    val = str(float(val) * 62.5)
                                 parameters.append(f"{param}{val}")
-                    
+
                     if parameters:
                         file.write(f"{g_code} {' '.join(parameters)}\n")
                 file.write("%\n")
             messagebox.showinfo("Success", f"G-code saved to {filename}")
         except Exception as e:
             messagebox.showerror("Error", str(e))
+
 
     def on_click(self):
         z_force_value = self.lineEdit.get()
