@@ -33,7 +33,7 @@ class SimpleForm(tk.Tk):
         self.runKeithleyButton.grid(row=1, column=1, padx=10, pady=10, sticky='w')
 
         # Button to stop the XYZ_Force_Sensor_test.py script
-        self.stopButton = tk.Button(self, text='Stop Script', command=self.stop_script)
+        self.stopButton = tk.Button(self, text='Stop Simulation', command=self.stop_script)
         self.stopButton.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
 
         # Frame to hold the entries
@@ -58,11 +58,12 @@ class SimpleForm(tk.Tk):
 
         # Button to select and run forces_plotter.py
         self.runForcesPlotterButton = tk.Button(self.gcode_button_frame, text='Run Forces Plotter', command=self.run_forces_plotter)
-        self.runForcesPlotterButton.grid(row=2, column=0, columnspan=2, pady=5)
+        self.runForcesPlotterButton.grid(row=2, column=0, padx=5, pady=5)
 
         # Button to run waveguide loss plotter
         self.runWaveguideLossPlotterButton = tk.Button(self.gcode_button_frame, text='Run Waveguide Loss Plotter', command=self.run_waveguide_loss_plotter)
-        self.runWaveguideLossPlotterButton.grid(row=3, column=0, columnspan=2, pady=5)
+        self.runWaveguideLossPlotterButton.grid(row=2, column=1, padx=5, pady=5)
+
 
     def add_gcode_row(self):
         row_frame = tk.Frame(self.entry_frame)
