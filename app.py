@@ -87,54 +87,7 @@ class SimpleForm(tk.Tk):
         self.entries.append(row)
         self.rows.append(row_frame)
 
-    def create_fields_for_mode(self, row_frame, row, mode):
-        for widget in row['widgets']:
-            widget.destroy()
-        row['widgets'].clear()
 
-        if mode == 'Pause':
-            p_entry = tk.Entry(row_frame, width=10)
-            p_entry.pack(side=tk.LEFT, padx=5)
-            row['P'] = p_entry
-            row['widgets'].append(p_entry)
-        else:
-            for field in ['X (cm)', 'Y (cm)', 'Vitesse (cm/s)']:
-                field_frame = tk.Frame(row_frame)
-                field_frame.pack(side=tk.LEFT, padx=5, expand=True, fill=tk.X)
-                label = tk.Label(field_frame, text=field)
-                label.pack()
-                entry = tk.Entry(field_frame, width=10)
-                entry.pack()
-                if field == 'X (cm)':
-                    row['X'] = entry
-                elif field == 'Y (cm)':
-                    row['Y'] = entry
-                elif field == 'Vitesse (cm/s)':
-                    row['F'] = entry
-                row['widgets'].append(field_frame)
-        # Clear existing widgets in the row except for the OptionMenu
-        for widget in row['widgets']:
-            widget.destroy()
-        row['widgets'].clear()
-
-        # Based on the mode, create appropriate fields
-        if mode == 'Pause':
-            # Create a field for P
-            p_entry = tk.Entry(row_frame, width=10)
-            p_entry.pack(side=tk.LEFT, padx=5)
-            row['P'] = p_entry
-            row['widgets'].append(p_entry)
-        else:
-            # Create fields for X, Y, F
-            for field in ['X', 'Y', 'F']:
-                field_frame = tk.Frame(row_frame)
-                field_frame.pack(side=tk.LEFT, padx=5, expand=True, fill=tk.X)
-                label = tk.Label(field_frame, text=field)
-                label.pack()
-                entry = tk.Entry(field_frame, width=10)
-                entry.pack()
-                row[field] = entry
-                row['widgets'].append(field_frame)
 
     def update_row_fields(self, row_frame, row, mode):
         # Update fields according to the mode (Linear or Pause)
@@ -149,6 +102,27 @@ class SimpleForm(tk.Tk):
             row_frame.destroy()
         self.entries.clear()
         self.rows.clear()
+
+    def create_fields_for_mode(self, row_frame, row, mode):
+        for widget in row['widgets']:
+            widget.destroy()
+        row['widgets'].clear()
+
+        if mode == 'Pause':
+            p_entry = tk.Entry(row_frame, width=10)
+            p_entry.pack(side=tk.LEFT, padx=5)
+            row['P'] = p_entry
+            row['widgets'].append(p_entry)
+        else:
+            for field in [('X (cm)', 'X'), ('Y (cm)', 'Y'), ('Vitesse', 'F')]:
+                field_frame = tk.Frame(row_frame)
+                field_frame.pack(side=tk.LEFT, padx=5, expand=True, fill=tk.X)
+                label = tk.Label(field_frame, text=field[0])
+                label.pack()
+                entry = tk.Entry(field_frame, width=10)
+                entry.pack()
+                row[field[1]] = entry
+                row['widgets'].append(field_frame)
 
     def save_to_file(self):
         filename = 'output_gcode.txt'
