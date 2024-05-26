@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import messagebox, filedialog
 import subprocess
 import sys
 
@@ -36,6 +36,13 @@ class SimpleForm(tk.Tk):
         self.runKeithleyButton = tk.Button(self, text='Run Keithley', command=self.run_keithley_script)
         self.runKeithleyButton.pack()
 
+        # Button to select and run forces_plotter.py
+        self.runForcesPlotterButton = tk.Button(self, text='Run Forces Plotter', command=self.run_forces_plotter)
+        self.runForcesPlotterButton.pack()
+
+        self.runWaveguideLossPlotterButton = tk.Button(self, text='Run Waveguide Loss Plotter', command=self.run_waveguide_loss_plotter)
+        self.runWaveguideLossPlotterButton.pack()
+        
         # Frame to hold the entries
         self.entry_frame = tk.Frame(self)
         self.entry_frame.pack(fill=tk.BOTH, expand=True, pady=10)
@@ -188,6 +195,26 @@ class SimpleForm(tk.Tk):
             print("Mux_Keithley_V3.py started successfully.")
         except Exception as e:
             print(f"Error starting Keithley script: {e}")
+
+    def run_forces_plotter(self):
+        file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
+        if file_path:
+            try:
+                subprocess.Popen(['python', 'forces_plotter.py', file_path])
+                print(f"forces_plotter.py started with file: {file_path}")
+            except Exception as e:
+                messagebox.showerror("Error", f"Failed to start forces_plotter.py: {e}")
+
+# Inside the SimpleForm class, add this method:
+
+    def run_waveguide_loss_plotter(self):
+        file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
+        if file_path:
+            try:
+                subprocess.Popen(['python', 'waveguide_loss_plotter.py', file_path])
+                print(f"waveguide_loss_plotter.py started with file: {file_path}")
+            except Exception as e:
+                messagebox.showerror("Error", f"Failed to start waveguide_loss_plotter.py: {e}")
 
 if __name__ == '__main__':
     app = SimpleForm()
