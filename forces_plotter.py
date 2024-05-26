@@ -61,7 +61,6 @@ def plot_forces(file_path):
     plt.ylabel('Force [N]')
     plt.xlabel('Time [s]')
     plt.legend()
-    plt.savefig("figure3.svg")
 
     plt.show()
 

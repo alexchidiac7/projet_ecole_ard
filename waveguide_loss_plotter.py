@@ -72,7 +72,6 @@ def plot_waveguide_loss(file_path):
     plt.ylabel('PD current [A]')
     plt.xlabel('Time [s]')
     plt.legend()
-    plt.savefig("figure1.svg")
 
     plt.figure(2)
     plt.plot(x2, y7, label="Right")
@@ -81,7 +80,6 @@ def plot_waveguide_loss(file_path):
     plt.ylabel('Normalized waveguide Loss [dB]')
     plt.xlabel('Time [s]')
     plt.legend()
-    plt.savefig("figure2.svg")
 
     plt.show()
 
