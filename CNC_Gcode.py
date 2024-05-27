@@ -22,10 +22,15 @@ dateAndTime = now.strftime("%Y-%m-%d_%H-%M-%S_")
 
 def listener():
     #time.sleep(5)
-    tng.API.StartFnW("/home/pi/Desktop/Haptic_Bench/Gcode/Gcode_X_Sp.txt")
+    tng.API.StartFnW("/home/pi/test_projet_ecole/output_gcode.txt")
     timeBegin = time.time()  
+    current_working_dir = "/home/pi/test_projet_ecole"
 
-    with open("/home/pi/Desktop/Haptic_Bench/Measure/" + dateAndTime + suffix + ".txt" , "w") as file:
+    measures_dir = os.path.join(current_working_dir, 'measures_CNC')
+    os.makedirs(measures_dir, exist_ok=True)
+    file_path = os.path.join(measures_dir, dateAndTime + suffix + ".txt")
+
+    with open(file_path, "w") as file:
         file.write("Time(s),X,Y,Z,Speed,\n")
         period = 0.5
         measurementNumber = 0.0
@@ -34,12 +39,12 @@ def listener():
                 timesList.append(time.time()-timeBegin)
                 x = tng.API.InfoWorkPosition(0)
                 time.sleep(1./100)
-                print(x)
+                #print(x)
                 y = tng.API.InfoWorkPosition(1)
-                print(y)
+                #print(y)
                 time.sleep(1./100)
                 z = tng.API.InfoWorkPosition(2)
-                print(z)
+                #print(z)
                 time.sleep(1./100)
                 v = tng.API.InfoSpeed()
                 time.sleep(1./100)

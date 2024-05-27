@@ -4,7 +4,10 @@ import matplotlib.pyplot as plt
 import csv
 import time
 from datetime import datetime
-#plt.ion()
+import os
+
+# Enable interactive mode
+plt.ion()
 
 # open a connection to the Keithley device
 smu = Keithley('ASRL/dev/ttyUSB1::INSTR', 5000)
@@ -19,9 +22,10 @@ dateAndTime = now.strftime("%Y-%m-%d_%H-%M-%S_")
 # Keithley parameters
 iset                    = 10e-6                # current source target -- useless
 vset                    = 0                  # voc
-#sourceRange             = ()
 measurementRange        = 10e-3
-#Keithley configuration
+#sourceRange             = ()
+
+
 #Keithley configuration
 smu.reset()
 smu.mode_4W()
@@ -35,9 +39,14 @@ smu.set_s_level('v', vset)
 smu.set_V_source()
 smu.set_s_level( 'v', 0)
 smu.on()
+
+
+# Initialize measurement and time lists
 measurement = []
 timesList = []
-# create an empty list to store the responses
+
+
+# Initialize channel data lists
 channel0 = [0,0]
 channel1 = [0,0]
 channel2 = [0,0]
@@ -48,47 +57,96 @@ channel6 = [0,0]
 channel7 = [0,0]
 ite = []
 timeList = []
-# create a figure and a plot
-fig, (axX,axY,axZ) = plt.subplots(3,1)
-lineX, = axX.plot([], [])
-lineY, = axY.plot([], [])
-lineZ, = axZ.plot([], [])
 
 
-# function to update the plot -really slow
-def update_plot(channel3,channel6,channel1,timeList):
-    for ax in [axX, axY, axZ]:
-        ax.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
-    # update the data of the plot
-    lineX.set_data(range(len(channel3)),channel3 )
-    lineY.set_data(range(len(channel6)), channel6)
-    lineZ.set_data(range(len(channel1)), channel1)
-    # set the limits of the plot
-    axX.set_xlim(0, len(channel3))
-    axY.set_xlim(0, len(channel6))
-    axZ.set_xlim(0, len(channel1))
-    axX.set_ylim(min(channel3), max(channel3))
-    axY.set_ylim(min(channel6), max(channel6))
-    axZ.set_ylim(min(channel1), max(channel1))
-    #axX.set_title("X Responses")
-    axX.set_xlabel("Point")
-    axX.set_ylabel("channel3")
-    #axY.set_title("Y Responses")
-    axY.set_xlabel("Point")
-    axY.set_ylabel("channel6")
-    #axZ.set_title("Z Responses")
-    axZ.set_xlabel("Point")
-    axZ.set_ylabel("channel1")
+# Create a figure and subplots for each channel
+fig, ((ax0, ax1, ax2, ax3), (ax4, ax5, ax6, ax7)) = plt.subplots(2, 4, figsize=(15, 10))
+
+# Initialize lines for each channel
+line0, = ax0.plot([], [])
+line1, = ax1.plot([], [])
+line2, = ax2.plot([], [])
+line3, = ax3.plot([], [])
+line4, = ax4.plot([], [])
+line5, = ax5.plot([], [])
+line6, = ax6.plot([], [])
+line7, = ax7.plot([], [])
+
+def update_plot(channel0, channel1, channel2, channel3, channel4, channel5, channel6, channel7, timeList):
+    for ax in [ax0, ax1, ax2, ax3, ax4, ax5, ax6, ax7]:
+        ax.ticklabel_format(style='sci', axis='y', scilimits=(0, 0))
+        
+    # update the data of the plots
+    line0.set_data(range(len(channel0)), channel0)
+    line1.set_data(range(len(channel1)), channel1)
+    line2.set_data(range(len(channel2)), channel2)
+    line3.set_data(range(len(channel3)), channel3)
+    line4.set_data(range(len(channel4)), channel4)
+    line5.set_data(range(len(channel5)), channel5)
+    line6.set_data(range(len(channel6)), channel6)
+    line7.set_data(range(len(channel7)), channel7)
+    
+    # set the limits of the plots
+    ax0.set_xlim(0, len(channel0))
+    ax1.set_xlim(0, len(channel1))
+    ax2.set_xlim(0, len(channel2))
+    ax3.set_xlim(0, len(channel3))
+    ax4.set_xlim(0, len(channel4))
+    ax5.set_xlim(0, len(channel5))
+    ax6.set_xlim(0, len(channel6))
+    ax7.set_xlim(0, len(channel7))
+
+    ax0.set_ylim(min(channel0), max(channel0))
+    ax1.set_ylim(min(channel1), max(channel1))
+    ax2.set_ylim(min(channel2), max(channel2))
+    ax3.set_ylim(min(channel3), max(channel3))
+    ax4.set_ylim(min(channel4), max(channel4))
+    ax5.set_ylim(min(channel5), max(channel5))
+    ax6.set_ylim(min(channel6), max(channel6))
+    ax7.set_ylim(min(channel7), max(channel7))
+
+    # set titles and labels for each plot
+    ax0.set_xlabel("Point")
+    ax0.set_ylabel("Channel 0")
+
+    ax1.set_xlabel("Point")
+    ax1.set_ylabel("Channel 1")
+
+    ax2.set_xlabel("Point")
+    ax2.set_ylabel("Channel 2")
+
+    ax3.set_xlabel("Point")
+    ax3.set_ylabel("Channel 3")
+
+    ax4.set_xlabel("Point")
+    ax4.set_ylabel("Channel 4")
+
+    ax5.set_xlabel("Point")
+    ax5.set_ylabel("Channel 5")
+
+    ax6.set_xlabel("Point")
+    ax6.set_ylabel("Channel 6")
+
+    ax7.set_xlabel("Point")
+    ax7.set_ylabel("Channel 7")
+
     # redraw the plot
     fig.canvas.draw()
     fig.canvas.flush_events()
+
 # open the file in write mode
 #now = datetime.now()
 #dateAndTime = now.strftime("%Y-%m-%d_%H-%M-%S_")
 
 #with open('current_measurements'+'dateAndTime'+.csv', 'w', newline='') as csvfile:
 v = 0
-with open("/home/pi/Desktop/Haptic_Bench/Measure/" + dateAndTime + suffix + ".txt" , "w") as file:
+
+script_dir = "/home/pi/test_projet_ecole/"
+measures_dir = os.path.join(script_dir, 'measures_MUX')
+os.makedirs(measures_dir, exist_ok=True)
+file_path = os.path.join(measures_dir, dateAndTime + suffix + ".txt")
+
+with open(file_path , "w") as file:
     file.write("Time(s),channel0,channel1,channel2,channel3,channel4,channel5,channel6,channel7\n")
 
     # create a list of empty lists to hold current measurements for each channel
@@ -164,7 +222,10 @@ with open("/home/pi/Desktop/Haptic_Bench/Measure/" + dateAndTime + suffix + ".tx
                 if(time.time()-timeBegin > measurementNumber*period):
                     measurementNumber += 1
                     file.write(str(timesList[-1]) + "," +str(channel0[-1]) + ","+ str(channel1[-1]) + "," +str(channel2[-1])+ "," +str(channel3[-1])+ "," +str(channel4[-1])+ "," +str(channel5[-1]) +"," +str(channel6[-1]) + "," +str(channel7[-1]) + "\n")
-                #update_plot(channel1,channel3,channel6,ite)
+
+                    
+                if channelNumber==7: 
+                    update_plot(channel0,channel1,channel2,channel3,channel4, channel5, channel6, channel7, ite)
                 smu.clear_buf(1)
                 #time.sleep(1/10)
 
