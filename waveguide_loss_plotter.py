@@ -46,17 +46,23 @@ def plot_waveguide_loss(file_path):
         y = [[] for _ in range(num_channels)]
         y_normalized = [[] for _ in range(num_channels)]
         
-        first_value = next(lines)
+        first_value = None
         for row in lines:
-            x2.append(float(row[0]) - float(first_value[0]))
-            for i in range(num_channels):
-                y_value = float(row[i + 1])
-                y[i].append(y_value)
-                if y_value != 0:
-                    y_normalized_value = 10 * np.log10(float(first_value[i + 1]) / y_value)
-                else:
-                    y_normalized_value = 0  # or any appropriate value you want to use in case of zero
-                y_normalized[i].append(y_normalized_value)
+            if first_value is None:
+                # Check if the first six channels have numbers
+                if all(row[i+1] != '0' for i in range(6)):
+                    first_value = row
+            
+            if first_value:
+                x2.append(float(row[0]) - float(first_value[0]))
+                for i in range(num_channels):
+                    y_value = float(row[i + 1])
+                    y[i].append(y_value)
+                    if y_value != 0:
+                        y_normalized_value = 10 * np.log10(float(first_value[i + 1]) / y_value)
+                    else:
+                        y_normalized_value = 0  # or any appropriate value you want to use in case of zero
+                    y_normalized[i].append(y_normalized_value)
 
     # Convert to numpy arrays
     x2 = np.array(x2)
