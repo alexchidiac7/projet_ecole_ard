@@ -1,4 +1,4 @@
-# Utilisation du système
+# Simulation
 
 Pour un exemple concret, nous voulons faire la simulation suivante:
 
@@ -82,3 +82,15 @@ La vitesse est 1000 pour notre exemple, c'est la plus utilisée. Vous pouvez l'a
 - **Vitesse de 1000** : il bouge de 10 cm en 37s, soit 0.270 cm/s ou 2.70 mm/s.
 - **Vitesse de 2000** : il bouge de 10 cm en 18s, soit 0.5 cm/s ou 5.5 mm/s.
 - **Vitesse de 4000** : il bouge de 10 cm en 15s, soit 0.6 cm/s ou 6.6 mm/s.
+
+## Conseils
+
+Il y a un grand bouton rouge dans la machine, il est utilisé pour arrêter les axes X et Y.
+
+L'axe Z peut être arrêté en utilisant le bouton "Stop Simulation" dans l'interface. Si l'axe continue à descendre, il faut redémarrer tout le Raspberry Pi.
+
+Quand le câble réseau n'est pas connecté au Raspberry Pi, il y a un bug qui rend tout le système plus lent.
+
+
+
+
