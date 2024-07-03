@@ -16,3 +16,7 @@ Le projet OPTISKIN a été conçu par le doctorant appelé Lionel Fliegans, le s
 Après avoir fini son projet, la machine qu’il avait conçue a été disponible pour que d’autres chercheurs puissent l’utiliser. Malheureusement,  à cause de plusieurs bugs et de sa complexité, il été très difficile d'exécuter des experiments ou d’essayer n’importe quoi. 
 
 Notre objectif dans ce projet est de comprendre comment cette machine fonctionne, tant au niveau électronique que logiciel, et de faire des modifications pour améliorer l'expérience utilisateur afin qu'elle puisse être utilisée par n'importe quel chercheur. 
+
+---
+
+[Github](https://github.com/alexchidiac7/projet_ecole_ard) avec le code du projet
